@@ -1,0 +1,21 @@
+delete_merged_file: true
+new_session: yes
+
+rmd_files: [
+  "index.Rmd",
+
+  "intro.Rmd",
+  "resources.Rmd",
+  "usecase.Rmd",
+
+  "framework.Rmd",
+
+  "depth.Rmd",
+  "summary-stats.Rmd",
+  "linear-models.Rmd",
+  "mixed-models.Rmd",
+  "survival.Rmd",
+  "cmh.Rmd",
+
+  "chapter-template.Rmd"
+]
