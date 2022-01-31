@@ -7,7 +7,7 @@ url: https://github.com/phuse-org
 output:
   bookdown::bs4_book: 
     repo:
-      base: https://phuse-org.github.io/CSRMLW_bookdown
+      base: https://github.com/phuse-org/CSRMLW_bookdown
       branch: main
       subdir: docs
 ---
