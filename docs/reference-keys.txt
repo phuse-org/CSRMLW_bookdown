@@ -18,7 +18,7 @@ linear-models
 mixed-models
 survival-models
 cmh
-title-of-chapter
+bookdown-template-title-of-chapter
 title-of-sub-section
 title-of-sub-section-1
 title-of-sub-section-2

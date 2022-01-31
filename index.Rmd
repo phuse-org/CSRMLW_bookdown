@@ -3,9 +3,13 @@ title: "Clinical Statistical Reporting in a Multilingual World"
 author: "PHUSE Whitepaper Team"
 date: "`r Sys.Date()`"
 site: "bookdown::bookdown_site"
+url: https://github.com/phuse-org
 output:
-  bookdown::gitbook: default
-documentclass: book
+  bookdown::bs4_book: 
+    repo:
+      base: https://phuse-org.github.io/CSRMLW_bookdown
+      branch: main
+      subdir: docs
 ---
 
 # Preface {-}

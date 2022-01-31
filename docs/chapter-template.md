@@ -1,4 +1,4 @@
-# Title of Chapter
+# Bookdown Template: Title of Chapter
 
 Replace this text with an introduction to this chapter.  
 
