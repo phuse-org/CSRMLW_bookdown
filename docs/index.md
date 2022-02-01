@@ -1,7 +1,7 @@
 ---
 title: "Clinical Statistical Reporting in a Multilingual World"
 author: "PHUSE Whitepaper Team"
-date: "2022-01-31"
+date: "2022-02-01"
 site: "bookdown::bookdown_site"
 url: https://github.com/phuse-org
 output:
@@ -10,6 +10,7 @@ output:
       base: https://github.com/phuse-org/CSRMLW_bookdown
       branch: main
       subdir: docs
+      icon: "fab fa-github"
 ---
 
 # Preface {-}
