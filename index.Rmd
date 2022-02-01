@@ -10,7 +10,6 @@ output:
     repo:
       base: https://github.com/phuse-org/CSRMLW_bookdown
       branch: main
-      subdir: docs
       icon: "fab fa-github"
 ---
 
