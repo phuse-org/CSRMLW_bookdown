@@ -8,18 +8,18 @@
 
     <meta name="author" content="PHUSE Whitepaper Team" />
   
-   
+   <meta name="description" content="An overview of the CSRMLW Framework" />
    <meta name="generator" content="placeholder" />
   <meta property="og:title" content="Clinical Statistical Reporting in a Multilingual World" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="<a href="https://github.com/phuse-org" class="uri">https://github.com/phuse-org</a>" />
   
-  
+  <meta property="og:description" content="An overview of the CSRMLW Framework" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Clinical Statistical Reporting in a Multilingual World" />
   
-  
+  <meta name="twitter:description" content="An overview of the CSRMLW Framework" />
   
   <!-- JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
@@ -333,7 +333,83 @@
 </div>
 <div id="mixed-models" class="section level1" number="8">
 <h1><span class="header-section-number">8</span> Mixed Models</h1>
+<div id="repeated-measures" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Repeated Measures</h2>
+<div id="introduction-1" class="section level3" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Introduction</h3>
+<p>This document focuses on a comparison of results generated using a Mixed Model for Repeated Measures (MMRM) in SAS and R. Data for the comparison was the lab ADaM dataset adlbh.xpt from the Phuse Pilot Study. Results were generated for each lab parameter and time point in the dataset using three different covariance structures, i.e. unstructured, compound symmetry and autoregressive of first order (AR(1)).</p>
+<div id="fitting-the-mmrm-in-sas" class="section level4" number="8.1.1.1">
+<h4><span class="header-section-number">8.1.1.1</span> Fitting the MMRM in SAS</h4>
+<p>In SAS the following code was used (assessments at <code>avisitn=0</code> should also be removed from the response variable):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>proc mixed data<span class="ot">=</span>adlbh;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>where base ne . and avisitn not <span class="cf">in</span> (., <span class="dv">99</span>);</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>class usubjid <span class="fu">trtpn</span>(<span class="at">ref=</span><span class="st">&quot;0&quot;</span>) avisitn;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>by paramcd param;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>model chg<span class="ot">=</span>base trtpn avisitn  trtpn<span class="sc">*</span>avisitn <span class="sc">/</span> solution cl alpha<span class="ot">=</span><span class="fl">0.05</span> ddfm<span class="ot">=</span>KR;</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>repeated avisitn<span class="sc">/</span>subject<span class="ot">=</span>usubjid type<span class="ot">=</span><span class="er">&amp;</span>covar;</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>lsmeans trtpn <span class="sc">*</span> avisitn <span class="sc">/</span> diff cl slice<span class="ot">=</span>avisitn;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>lsmeans trtpn <span class="sc">/</span> diff cl;</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>run;</span></code></pre></div>
+<p>where the macro variable <code>covar</code> could be <code>UN</code>, <code>CS</code> or <code>AR(1)</code>. The results were stored in .csv files that were post-processed in R and compared with the results from R.</p>
+</div>
+</div>
+<div id="fitting-the-mmrm-in-r" class="section level3" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Fitting the MMRM in R</h3>
+<div id="using-the-nlmegls-function" class="section level4" number="8.1.2.1">
+<h4><span class="header-section-number">8.1.2.1</span> Using the <code>nlme::gls</code> function</h4>
+<p>The code below implements an MMRM fit in R with the <code>nlme::gls</code> function.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gls</span>(<span class="at">model =</span> CHG <span class="sc">~</span> TRTP <span class="sc">+</span> AVISITN <span class="sc">+</span> TRTP<span class="sc">:</span>AVISITN <span class="sc">+</span> AVISITN <span class="sc">+</span> BASE,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> data,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">correlation =</span> <span class="fu">corSymm</span>(<span class="at">form =</span> <span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>SUBJID),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">weights =</span> <span class="fu">varIdent</span>(<span class="at">form =</span> <span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>AVISITN),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">control =</span> <span class="fu">glsControl</span>(<span class="at">opt =</span> <span class="st">&quot;optim&quot;</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;REML&quot;</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.action =</span> <span class="st">&quot;na.omit&quot;</span>)</span></code></pre></div>
+<p>here we can swap out <code>corSymm</code> for <code>corCompSymm</code> to give the compound symmetry structure or <code>corCAR1</code> for autoregressive of first order (AR(1)).</p>
+</div>
+<div id="using-the-lme4lmer-function" class="section level4" number="8.1.2.2">
+<h4><span class="header-section-number">8.1.2.2</span> Using the <code>lme4::lmer</code> function</h4>
+<p>An alternative way to fit an MMRM with unstructured covariance matrices is to use the <code>lme4::lmer</code> function as described by Daniel Sabanes Bove in his R in Pharma talk from 2020 see <a href="https://github.com/rinpharma/2020_presentations/blob/main/talks_folder/2020-Sabanes_Bove-Implementing_MMRM_in_R.pdf">here</a>. The relevance of this fit is apparent when we consider the availability of the Kenward-Roger’s degrees of freedom for the MMRM in R, which at the time of writing, were not yet available for the <code>nlme::gls</code> function via the <code>pbkrtest</code> package (see <a href="https://people.math.aau.dk/~sorenh/software/pbkrtest/#NEWS">here</a>).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lmer</span>(CHG <span class="sc">~</span> TRTA <span class="sc">*</span> VISIT <span class="sc">+</span> VISIT <span class="sc">+</span> BASE <span class="sc">+</span> (<span class="dv">0</span> <span class="sc">+</span> VISIT<span class="sc">|</span>SUBJID),</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> data,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">control =</span> <span class="fu">lmerControl</span>(<span class="at">check.nobs.vs.nRE =</span> <span class="st">&quot;ignore&quot;</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">na.action =</span> na.omit)</span></code></pre></div>
+</div>
+<div id="extracting-effect-estimates-using-emmeans" class="section level4" number="8.1.2.3">
+<h4><span class="header-section-number">8.1.2.3</span> Extracting effect estimates using <code>emmeans</code></h4>
+<p>In order to extract relevant marginal means (LSmeans) and contrasts we can use the <code>emmeans</code> package. Below we start by constructing a <code>ref_grid</code> used to make explicit just how the predictions are generated across the levels of <code>TRTP</code> and <code>AVISITN</code>. The <code>emmeans</code> function permits various marginal means to be extracted depending on the <code>formula</code> provided and the following <code>pairs()</code> function call derives relevant contrasts. Note that more control can be obtained by calling the <code>contrast()</code> function.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod_grid <span class="ot">&lt;-</span> <span class="fu">ref_grid</span>(model, <span class="at">data =</span> data, <span class="at">mode =</span> <span class="st">&quot;df.error&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mod_emm <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(mod_grid, <span class="sc">~</span>TRTP <span class="sc">*</span> AVISITN, <span class="at">mode =</span> <span class="st">&quot;df.error&quot;</span>) </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(mod_emm) </span></code></pre></div>
+</div>
+</div>
+<div id="comparison-between-sas-and-r" class="section level3" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> Comparison between SAS and R</h3>
+<p>With results available for SAS and R model fits, we turn our attention to generating some visual comparisons of the results. Note that here we adopt a Bland-Altman type plot which plots the difference on the y-axis and the average on the x-axis. This offers a way to inspect any bias or relationships with the size of effect and the associated bias.</p>
+<p>For the extracted LS-means</p>
+<p><img src="mixed-models_files/figure-html/unnamed-chunk-6-1.png" width="100%" /><img src="mixed-models_files/figure-html/unnamed-chunk-6-2.png" width="100%" /><img src="mixed-models_files/figure-html/unnamed-chunk-6-3.png" width="100%" /><img src="mixed-models_files/figure-html/unnamed-chunk-6-4.png" width="100%" /></p>
+<p>and corresponding SEs</p>
+<p><img src="mixed-models_files/figure-html/unnamed-chunk-7-1.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-7-2.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-7-3.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-7-4.png" width="672" /></p>
+<p>For the derived contrasts</p>
+<p><img src="mixed-models_files/figure-html/unnamed-chunk-8-1.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-8-2.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-8-3.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-8-4.png" width="672" /></p>
+<p>and corresponding 95%CI widths</p>
+<p><img src="mixed-models_files/figure-html/unnamed-chunk-9-1.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-9-2.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-9-3.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-9-4.png" width="672" /></p>
+</div>
+<div id="analysis-of-sas-and-r-comparison" class="section level3" number="8.1.4">
+<h3><span class="header-section-number">8.1.4</span> Analysis of SAS and R Comparison</h3>
+<p>Using SAS PROC MIXED and R functions such as gls, lmer, mod_grid, and mod_emm, results were broadly aligned. Results not being exact can be attributed to many factors such as rounding precision, data handling, and many other internal processing nuances. However, Bland-Altman type plots showed small but randomly distributed differences across a broad range of parameters from the input data. Apart from a small subset of the parameters, there were no trends observed which would have suggested systemic differences between the languages. These analyses were based on a single set of data so more research must be done. However, based on comparing R documentation with SAS documentation, as well as the results displayed above in this paper, it is evident that the R and the SAS methods cover do produce similarly valid results for the options which were tested.</p>
+</div>
+<div id="future-work" class="section level3" number="8.1.5">
+<h3><span class="header-section-number">8.1.5</span> Future work</h3>
+<ul>
+<li>Run SAS code by also removing assessments at <code>avisitn=0</code> from the response variable, and using <code>trtp</code> (or <code>trtpn</code>) and <code>avisit</code> (or <code>avisitn</code>)</li>
+<li>Investigating the differences</li>
+<li>Implement <code>lmer</code> equivalent to MMRM with compound symmetry</li>
+<li>Comparisons for other models, i.e. only random, random and repeated, no repeated</li>
+</ul>
 <!--chapter:end:mixed-models.Rmd-->
+</div>
+</div>
 </div>
 <div id="survival-models" class="section level1" number="9">
 <h1><span class="header-section-number">9</span> Survival Models</h1>
@@ -359,7 +435,7 @@
 <li>See <a href="https://bookdown.org/yihui/bookdown/">Bookdown</a> for more information on how <code>bookdown</code> works</li>
 <li>The <a href="https://github.com/rstudio/bookdown/tree/main/inst/examples">The GitHub Page</a> for examples of how these individual <code>.Rmd</code> files should be formatted</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
 ##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
 ##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
@@ -372,7 +448,7 @@
 ##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
 ##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
 ##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Markdown chunks will be treated as raw markdown syntax, and will not be converted to HTML</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Markdown chunks will be treated as raw markdown syntax, and will not be converted to HTML</span></span></code></pre></div>
 </div>
 <div id="title-of-sub-section-1" class="section level2" number="11.2">
 <h2><span class="header-section-number">11.2</span> Title of Sub-Section</h2>
@@ -408,7 +484,7 @@
   <div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Clinical Statistical Reporting in a Multilingual World</strong>" was written by PHUSE Whitepaper Team. It was last built on 2022-02-01.</p>
+    <p>"<strong>Clinical Statistical Reporting in a Multilingual World</strong>" was written by PHUSE Whitepaper Team. It was last built on 2022-02-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
