@@ -6,8 +6,8 @@ fn_buildbook <- function(){
     dir = ".",
     output_dir = "docs",
     preview = F,
-    in_session = T,
-    quiet = F)
+    in_session = F,
+    quiet = T)
 }
 
 # fn_buildbook()
