@@ -32,3 +32,12 @@ bookdown-template-title-of-chapter
 title-of-sub-section
 title-of-sub-section-1
 title-of-sub-section-2
+topic-1-bv
+getting-started
+sums-of-squares-types
+getting-started-1
+contrasts
+getting-started-2
+using-contrasts-in-r
+easy-contrasts-in-r-with-emmeans
+matching-contrasts-r-and-sas
