@@ -10,17 +10,237 @@
 
 ### Getting Started
 
+To demonstrate the various types of sums of squares, we'll create a data frame called `df_disease` taken from the SAS documentation (__reference__). The summary of the data is shown.
+
+
+```
+## # A tibble: 3 x 3
+##   drug  disease     y
+##   <fct> <fct>   <dbl>
+## 1 1     1          42
+## 2 1     1          44
+## 3 1     1          36
+```
+
+```
+##  drug   disease       y        
+##  1:18   1:24    Min.   :-6.00  
+##  2:18   2:24    1st Qu.: 9.00  
+##  3:18   3:24    Median :21.00  
+##  4:18           Mean   :18.88  
+##                 3rd Qu.:28.00  
+##                 Max.   :44.00  
+##                 NA's   :14
+```
+
+### The Model
+
+For this example, we're testing for a significant difference in `stem_length` using ANOVA.  In R, we're using `lm()` to run the ANOVA, and then using `broom::glance()` and `broom::tidy()` to view the results in a table format.
+
+
+```r
+lm_model <- lm(y ~ drug + disease + drug*disease, df_disease)
+```
+
+The `glance` function gives us a summary of the model diagnostic values.
+
+
+```r
+lm_model %>% glance()
+```
+
+```
+## # A tibble: 1 x 12
+##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>
+## 1     0.456         0.326  10.5      3.51 0.00130    11  -212.  450.  477.
+## # ... with 3 more variables: deviance <dbl>, df.residual <int>, nobs <int>
+```
+
+The `tidy` function gives a summary of the model results.
+
+
+```r
+lm_model %>% tidy()
+```
+
+```
+## # A tibble: 12 x 5
+##    term           estimate std.error statistic      p.value
+##    <chr>             <dbl>     <dbl>     <dbl>        <dbl>
+##  1 (Intercept)      29.3        4.29    6.84   0.0000000160
+##  2 drug2            -1.33       6.36   -0.210  0.835       
+##  3 drug3           -13.0        7.43   -1.75   0.0869      
+##  4 drug4           -15.7        6.36   -2.47   0.0172      
+##  5 disease2         -1.08       6.78   -0.160  0.874       
+##  6 disease3         -8.93       6.36   -1.40   0.167       
+##  7 drug2:disease2    6.58       9.78    0.673  0.504       
+##  8 drug3:disease2  -10.9       10.2    -1.06   0.295       
+##  9 drug4:disease2    0.317      9.30    0.0340 0.973       
+## 10 drug2:disease3   -0.900      9.00   -0.100  0.921       
+## 11 drug3:disease3    1.10      10.2     0.107  0.915       
+## 12 drug4:disease3    9.53       9.20    1.04   0.306
+```
+
+
+### The Results
+
+You'll see that R print the individual results for each level of the drug and disease interaction.  We can get the combined F table in R using the `anova()` function on the model object.
+
+
+```r
+lm_model %>% 
+  anova() %>% 
+  tidy() %>% 
+  kable()
+```
+
+
+
+|term         | df|     sumsq|    meansq| statistic|   p.value|
+|:------------|--:|---------:|---------:|---------:|---------:|
+|drug         |  3| 3133.2385| 1044.4128|  9.455761| 0.0000558|
+|disease      |  2|  418.8337|  209.4169|  1.895990| 0.1617201|
+|drug:disease |  6|  707.2663|  117.8777|  1.067225| 0.3958458|
+|Residuals    | 46| 5080.8167|  110.4525|        NA|        NA|
+
+And with some extra work, we can get a `Total` row to match the F table output by SAS.
+
+
+```r
+lm_model %>%
+  anova() %>%
+  tidy() %>%
+  add_row(term = "Total", df = sum(.$df), sumsq = sum(.$sumsq)) %>% 
+  kable()
+```
+
+
+
+|term         | df|     sumsq|    meansq| statistic|   p.value|
+|:------------|--:|---------:|---------:|---------:|---------:|
+|drug         |  3| 3133.2385| 1044.4128|  9.455761| 0.0000558|
+|disease      |  2|  418.8337|  209.4169|  1.895990| 0.1617201|
+|drug:disease |  6|  707.2663|  117.8777|  1.067225| 0.3958458|
+|Residuals    | 46| 5080.8167|  110.4525|        NA|        NA|
+|Total        | 57| 9340.1552|        NA|        NA|        NA|
+
+Comparing this to the output in SAS, we see the following.
+
+
+```r
+proc glm;
+   class drug disease;
+   model y=drug disease drug*disease / ss1 ss2 ss3 ss4;
+run;
+```
+
+<img src="images/linear/sas-f-table.png" width="90%" style="display: block; margin: auto;" />
+
+### Sums of Squares Tables
+
+In SAS, it is easy to find the tables for the variouse types of sums of squares calculations. Unfortunately, it is not easy to match this output in using functions from base R.  However, the `rstatix` package offers a solution to produce these various sums of squares tables.  Note that there does not appear to be a `Type IV SS` equivalent in R.  
+
+#### Type I
+
+In R,
+
+
+```r
+df_disease %>% 
+  rstatix::anova_test(
+    y ~ drug + disease + drug*disease, 
+    type = 1, 
+    detailed = TRUE) %>% 
+  rstatix::get_anova_table() %>% 
+  kable()
+```
+
+
+
+|Effect       | DFn| DFd|      SSn|      SSd|     F|        p|p<.05 |   ges|
+|:------------|---:|---:|--------:|--------:|-----:|--------:|:-----|-----:|
+|drug         |   3|  46| 3133.239| 5080.817| 9.456| 5.58e-05|*     | 0.381|
+|disease      |   2|  46|  418.834| 5080.817| 1.896| 1.62e-01|      | 0.076|
+|drug:disease |   6|  46|  707.266| 5080.817| 1.067| 3.96e-01|      | 0.122|
+
+And in SAS, 
+
+<img src="images/linear/sas-ss-type-1.png" width="75%" style="display: block; margin: auto;" />
+
+
+#### Type II
+
+In R,
+
+
+```r
+df_disease %>% 
+  rstatix::anova_test(
+    y ~ drug + disease + drug*disease, 
+    type = 2, 
+    detailed = TRUE) %>% 
+  rstatix::get_anova_table() %>% 
+  kable()
+```
+
+
+
+|Effect       |      SSn|      SSd| DFn| DFd|     F|        p|p<.05 |   ges|
+|:------------|--------:|--------:|---:|---:|-----:|--------:|:-----|-----:|
+|drug         | 3063.433| 5080.817|   3|  46| 9.245| 6.75e-05|*     | 0.376|
+|disease      |  418.834| 5080.817|   2|  46| 1.896| 1.62e-01|      | 0.076|
+|drug:disease |  707.266| 5080.817|   6|  46| 1.067| 3.96e-01|      | 0.122|
+
+And in SAS, 
+
+<img src="images/linear/sas-ss-type-2.png" width="75%" style="display: block; margin: auto;" />
+
+
+#### Type III
+
+In R,
+
+
+```r
+df_disease %>% 
+  rstatix::anova_test(
+    y ~ drug + disease + drug*disease, 
+    type = 3, 
+    detailed = TRUE) %>% 
+  rstatix::get_anova_table() %>% 
+  kable()
+```
+
+
+
+|Effect       |       SSn|      SSd| DFn| DFd|       F|        p|p<.05 |   ges|
+|:------------|---------:|--------:|---:|---:|-------:|--------:|:-----|-----:|
+|(Intercept)  | 20037.613| 5080.817|   1|  46| 181.414| 0.00e+00|*     | 0.798|
+|drug         |  2997.472| 5080.817|   3|  46|   9.046| 8.09e-05|*     | 0.371|
+|disease      |   415.873| 5080.817|   2|  46|   1.883| 1.64e-01|      | 0.076|
+|drug:disease |   707.266| 5080.817|   6|  46|   1.067| 3.96e-01|      | 0.122|
+
+And in SAS, 
+
+<img src="images/linear/sas-ss-type-3.png" width="75%" style="display: block; margin: auto;" />
+
+#### Type IV
+
+In SAS,
+
+<img src="images/linear/sas-ss-type-4.png" width="75%" style="display: block; margin: auto;" />
+
+In R there is no equivalent operation to the `Type IV` sums of squares calculation in SAS.
+
+### Wrap Up - Sums of Squares
+
 ## Contrasts
 
 ### Getting Started
 
-To demonstrate contrasts, we'll be using a created data frame called `df_trial`. We see that the `drug` variable has three levels, _A_, _C_ and _E_.
+To demonstrate contrasts, we'll create a data frame called `df_trial`. We see that the `drug` variable has three levels, _A_, _C_ and _E_.
 
-
-```r
-levels_drug <- levels(df_trial$drug)
-summary(df_trial)
-```
 
 ```
 ##  drug        pre             post       sex   
@@ -30,10 +250,6 @@ summary(df_trial)
 ##         Mean   :10.73   Mean   : 7.90         
 ##         3rd Qu.:13.75   3rd Qu.:12.75         
 ##         Max.   :21.00   Max.   :23.00
-```
-
-```r
-glimpse(df_trial)
 ```
 
 ```
@@ -244,3 +460,4 @@ proc glm data=work.mycsv;
 run;
 ```
 
+### Wrap Up - Contrasts

@@ -77,15 +77,15 @@
 <span class="header-section-number">8.1.1.1</span> Fitting the MMRM in SAS<a class="anchor" aria-label="anchor" href="#fitting-the-mmrm-in-sas"><i class="fas fa-link"></i></a>
 </h4>
 <p>In SAS the following code was used (assessments at <code>avisitn=0</code> should also be removed from the response variable):</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="mixed-models.html#cb24-1" aria-hidden="true" tabindex="-1"></a>proc mixed data<span class="ot">=</span>adlbh;</span>
-<span id="cb24-2"><a href="mixed-models.html#cb24-2" aria-hidden="true" tabindex="-1"></a>where base ne . and avisitn not <span class="cf">in</span> (., <span class="dv">99</span>);</span>
-<span id="cb24-3"><a href="mixed-models.html#cb24-3" aria-hidden="true" tabindex="-1"></a>class usubjid <span class="fu">trtpn</span>(<span class="at">ref=</span><span class="st">"0"</span>) avisitn;</span>
-<span id="cb24-4"><a href="mixed-models.html#cb24-4" aria-hidden="true" tabindex="-1"></a>by paramcd param;</span>
-<span id="cb24-5"><a href="mixed-models.html#cb24-5" aria-hidden="true" tabindex="-1"></a>model chg<span class="ot">=</span>base trtpn avisitn  trtpn<span class="sc">*</span>avisitn <span class="sc">/</span> solution cl alpha<span class="ot">=</span><span class="fl">0.05</span> ddfm<span class="ot">=</span>KR;</span>
-<span id="cb24-6"><a href="mixed-models.html#cb24-6" aria-hidden="true" tabindex="-1"></a>repeated avisitn<span class="sc">/</span>subject<span class="ot">=</span>usubjid type<span class="ot">=</span><span class="er">&amp;</span>covar;</span>
-<span id="cb24-7"><a href="mixed-models.html#cb24-7" aria-hidden="true" tabindex="-1"></a>lsmeans trtpn <span class="sc">*</span> avisitn <span class="sc">/</span> diff cl slice<span class="ot">=</span>avisitn;</span>
-<span id="cb24-8"><a href="mixed-models.html#cb24-8" aria-hidden="true" tabindex="-1"></a>lsmeans trtpn <span class="sc">/</span> diff cl;</span>
-<span id="cb24-9"><a href="mixed-models.html#cb24-9" aria-hidden="true" tabindex="-1"></a>run;</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="mixed-models.html#cb35-1" aria-hidden="true" tabindex="-1"></a>proc mixed data<span class="ot">=</span>adlbh;</span>
+<span id="cb35-2"><a href="mixed-models.html#cb35-2" aria-hidden="true" tabindex="-1"></a>where base ne . and avisitn not <span class="cf">in</span> (., <span class="dv">99</span>);</span>
+<span id="cb35-3"><a href="mixed-models.html#cb35-3" aria-hidden="true" tabindex="-1"></a>class usubjid <span class="fu">trtpn</span>(<span class="at">ref=</span><span class="st">"0"</span>) avisitn;</span>
+<span id="cb35-4"><a href="mixed-models.html#cb35-4" aria-hidden="true" tabindex="-1"></a>by paramcd param;</span>
+<span id="cb35-5"><a href="mixed-models.html#cb35-5" aria-hidden="true" tabindex="-1"></a>model chg<span class="ot">=</span>base trtpn avisitn  trtpn<span class="sc">*</span>avisitn <span class="sc">/</span> solution cl alpha<span class="ot">=</span><span class="fl">0.05</span> ddfm<span class="ot">=</span>KR;</span>
+<span id="cb35-6"><a href="mixed-models.html#cb35-6" aria-hidden="true" tabindex="-1"></a>repeated avisitn<span class="sc">/</span>subject<span class="ot">=</span>usubjid type<span class="ot">=</span><span class="er">&amp;</span>covar;</span>
+<span id="cb35-7"><a href="mixed-models.html#cb35-7" aria-hidden="true" tabindex="-1"></a>lsmeans trtpn <span class="sc">*</span> avisitn <span class="sc">/</span> diff cl slice<span class="ot">=</span>avisitn;</span>
+<span id="cb35-8"><a href="mixed-models.html#cb35-8" aria-hidden="true" tabindex="-1"></a>lsmeans trtpn <span class="sc">/</span> diff cl;</span>
+<span id="cb35-9"><a href="mixed-models.html#cb35-9" aria-hidden="true" tabindex="-1"></a>run;</span></code></pre></div>
 <p>where the macro variable <code>covar</code> could be <code>UN</code>, <code>CS</code> or <code>AR(1)</code>. The results were stored in .csv files that were post-processed in R and compared with the results from R.</p>
 </div>
 </div>
@@ -98,7 +98,7 @@
 <span class="header-section-number">8.1.2.1</span> Using the <code>nlme::gls</code> function<a class="anchor" aria-label="anchor" href="#using-the-nlmegls-function"><i class="fas fa-link"></i></a>
 </h4>
 <p>The code below implements an MMRM fit in R with the <code><a href="https://rdrr.io/pkg/nlme/man/gls.html">nlme::gls</a></code> function.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">gls</span><span class="op">(</span>model <span class="op">=</span> <span class="va">CHG</span> <span class="op">~</span> <span class="va">TRTP</span> <span class="op">+</span> <span class="va">AVISITN</span> <span class="op">+</span> <span class="va">TRTP</span><span class="op">:</span><span class="va">AVISITN</span> <span class="op">+</span> <span class="va">AVISITN</span> <span class="op">+</span> <span class="va">BASE</span>,
     data <span class="op">=</span> <span class="va">data</span>,
     correlation <span class="op">=</span> <span class="fu">corSymm</span><span class="op">(</span>form <span class="op">=</span> <span class="op">~</span><span class="fl">1</span><span class="op">|</span><span class="va">SUBJID</span><span class="op">)</span>,
@@ -113,7 +113,7 @@
 <span class="header-section-number">8.1.2.2</span> Using the <code>lme4::lmer</code> function<a class="anchor" aria-label="anchor" href="#using-the-lme4lmer-function"><i class="fas fa-link"></i></a>
 </h4>
 <p>An alternative way to fit an MMRM with unstructured covariance matrices is to use the <code><a href="https://rdrr.io/pkg/lme4/man/lmer.html">lme4::lmer</a></code> function as described by Daniel Sabanes Bove in his R in Pharma talk from 2020 see <a href="https://github.com/rinpharma/2020_presentations/blob/main/talks_folder/2020-Sabanes_Bove-Implementing_MMRM_in_R.pdf">here</a>. The relevance of this fit is apparent when we consider the availability of the Kenward-Roger’s degrees of freedom for the MMRM in R, which at the time of writing, were not yet available for the <code><a href="https://rdrr.io/pkg/nlme/man/gls.html">nlme::gls</a></code> function via the <code>pbkrtest</code> package (see <a href="https://people.math.aau.dk/~sorenh/software/pbkrtest/#NEWS">here</a>).</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">lmer</span><span class="op">(</span><span class="va">CHG</span> <span class="op">~</span> <span class="va">TRTA</span> <span class="op">*</span> <span class="va">VISIT</span> <span class="op">+</span> <span class="va">VISIT</span> <span class="op">+</span> <span class="va">BASE</span> <span class="op">+</span> <span class="op">(</span><span class="fl">0</span> <span class="op">+</span> <span class="va">VISIT</span><span class="op">|</span><span class="va">SUBJID</span><span class="op">)</span>,
      data <span class="op">=</span> <span class="va">data</span>,
      control <span class="op">=</span> <span class="fu">lmerControl</span><span class="op">(</span>check.nobs.vs.nRE <span class="op">=</span> <span class="st">"ignore"</span><span class="op">)</span>,
@@ -124,7 +124,7 @@
 <span class="header-section-number">8.1.2.3</span> Extracting effect estimates using <code>emmeans</code><a class="anchor" aria-label="anchor" href="#extracting-effect-estimates-using-emmeans"><i class="fas fa-link"></i></a>
 </h4>
 <p>In order to extract relevant marginal means (LSmeans) and contrasts we can use the <code>emmeans</code> package. Below we start by constructing a <code>ref_grid</code> used to make explicit just how the predictions are generated across the levels of <code>TRTP</code> and <code>AVISITN</code>. The <code>emmeans</code> function permits various marginal means to be extracted depending on the <code>formula</code> provided and the following <code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code> function call derives relevant contrasts. Note that more control can be obtained by calling the <code>contrast()</code> function.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mod_grid</span> <span class="op">&lt;-</span> <span class="fu">ref_grid</span><span class="op">(</span><span class="va">model</span>, data <span class="op">=</span> <span class="va">data</span>, mode <span class="op">=</span> <span class="st">"df.error"</span><span class="op">)</span>
 <span class="va">mod_emm</span> <span class="op">&lt;-</span> <span class="fu">emmeans</span><span class="op">(</span><span class="va">mod_grid</span>, <span class="op">~</span><span class="va">TRTP</span> <span class="op">*</span> <span class="va">AVISITN</span>, mode <span class="op">=</span> <span class="st">"df.error"</span><span class="op">)</span> 
 <span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">mod_emm</span><span class="op">)</span> </code></pre></div>

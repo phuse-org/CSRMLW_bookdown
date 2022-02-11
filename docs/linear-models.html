@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>7 Linear Models | Clinical Statistical Reporting in a Multilingual World</title>
 <meta name="author" content="PHUSE Whitepaper Team">
-<meta name="description" content="7.1 Topic 1 (BV)  7.1.1 Getting Started   7.2 Sums of Squares Types  7.2.1 Getting Started   7.3 Contrasts  7.3.1 Getting Started To demonstrate contrasts, we’ll be using a created data frame...">
+<meta name="description" content="7.1 Topic 1 (BV)  7.1.1 Getting Started   7.2 Sums of Squares Types  7.2.1 Getting Started To demonstrate the various types of sums of squares, we’ll create a data frame called df_disease taken...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="7 Linear Models | Clinical Statistical Reporting in a Multilingual World">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/phuse-org/linear-models.html">
-<meta property="og:description" content="7.1 Topic 1 (BV)  7.1.1 Getting Started   7.2 Sums of Squares Types  7.2.1 Getting Started   7.3 Contrasts  7.3.1 Getting Started To demonstrate contrasts, we’ll be using a created data frame...">
+<meta property="og:description" content="7.1 Topic 1 (BV)  7.1.1 Getting Started   7.2 Sums of Squares Types  7.2.1 Getting Started To demonstrate the various types of sums of squares, we’ll create a data frame called df_disease taken...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="7 Linear Models | Clinical Statistical Reporting in a Multilingual World">
-<meta name="twitter:description" content="7.1 Topic 1 (BV)  7.1.1 Getting Started   7.2 Sums of Squares Types  7.2.1 Getting Started   7.3 Contrasts  7.3.1 Getting Started To demonstrate contrasts, we’ll be using a created data frame...">
+<meta name="twitter:description" content="7.1 Topic 1 (BV)  7.1.1 Getting Started   7.2 Sums of Squares Types  7.2.1 Getting Started To demonstrate the various types of sums of squares, we’ll create a data frame called df_disease taken...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -81,6 +81,397 @@
 <h3>
 <span class="header-section-number">7.2.1</span> Getting Started<a class="anchor" aria-label="anchor" href="#getting-started-1"><i class="fas fa-link"></i></a>
 </h3>
+<p>To demonstrate the various types of sums of squares, we’ll create a data frame called <code>df_disease</code> taken from the SAS documentation (<strong>reference</strong>). The summary of the data is shown.</p>
+<pre><code>## # A tibble: 3 x 3
+##   drug  disease     y
+##   &lt;fct&gt; &lt;fct&gt;   &lt;dbl&gt;
+## 1 1     1          42
+## 2 1     1          44
+## 3 1     1          36</code></pre>
+<pre><code>##  drug   disease       y        
+##  1:18   1:24    Min.   :-6.00  
+##  2:18   2:24    1st Qu.: 9.00  
+##  3:18   3:24    Median :21.00  
+##  4:18           Mean   :18.88  
+##                 3rd Qu.:28.00  
+##                 Max.   :44.00  
+##                 NA's   :14</code></pre>
+</div>
+<div id="the-model" class="section level3" number="7.2.2">
+<h3>
+<span class="header-section-number">7.2.2</span> The Model<a class="anchor" aria-label="anchor" href="#the-model"><i class="fas fa-link"></i></a>
+</h3>
+<p>For this example, we’re testing for a significant difference in <code>stem_length</code> using ANOVA. In R, we’re using <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> to run the ANOVA, and then using <code><a href="https://generics.r-lib.org/reference/glance.html">broom::glance()</a></code> and <code><a href="https://generics.r-lib.org/reference/tidy.html">broom::tidy()</a></code> to view the results in a table format.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lm_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">drug</span> <span class="op">+</span> <span class="va">disease</span> <span class="op">+</span> <span class="va">drug</span><span class="op">*</span><span class="va">disease</span>, <span class="va">df_disease</span><span class="op">)</span></code></pre></div>
+<p>The <code>glance</code> function gives us a summary of the model diagnostic values.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lm_model</span> <span class="op">%&gt;%</span> <span class="fu">glance</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 12
+##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.456         0.326  10.5      3.51 0.00130    11  -212.  450.  477.
+## # ... with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+<p>The <code>tidy</code> function gives a summary of the model results.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lm_model</span> <span class="op">%&gt;%</span> <span class="fu">tidy</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 12 x 5
+##    term           estimate std.error statistic      p.value
+##    &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;
+##  1 (Intercept)      29.3        4.29    6.84   0.0000000160
+##  2 drug2            -1.33       6.36   -0.210  0.835       
+##  3 drug3           -13.0        7.43   -1.75   0.0869      
+##  4 drug4           -15.7        6.36   -2.47   0.0172      
+##  5 disease2         -1.08       6.78   -0.160  0.874       
+##  6 disease3         -8.93       6.36   -1.40   0.167       
+##  7 drug2:disease2    6.58       9.78    0.673  0.504       
+##  8 drug3:disease2  -10.9       10.2    -1.06   0.295       
+##  9 drug4:disease2    0.317      9.30    0.0340 0.973       
+## 10 drug2:disease3   -0.900      9.00   -0.100  0.921       
+## 11 drug3:disease3    1.10      10.2     0.107  0.915       
+## 12 drug4:disease3    9.53       9.20    1.04   0.306</code></pre>
+</div>
+<div id="the-results" class="section level3" number="7.2.3">
+<h3>
+<span class="header-section-number">7.2.3</span> The Results<a class="anchor" aria-label="anchor" href="#the-results"><i class="fas fa-link"></i></a>
+</h3>
+<p>You’ll see that R print the individual results for each level of the drug and disease interaction. We can get the combined F table in R using the <code><a href="https://rdrr.io/r/stats/anova.html">anova()</a></code> function on the model object.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lm_model</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">tidy</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">term</th>
+<th align="right">df</th>
+<th align="right">sumsq</th>
+<th align="right">meansq</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">drug</td>
+<td align="right">3</td>
+<td align="right">3133.2385</td>
+<td align="right">1044.4128</td>
+<td align="right">9.455761</td>
+<td align="right">0.0000558</td>
+</tr>
+<tr class="even">
+<td align="left">disease</td>
+<td align="right">2</td>
+<td align="right">418.8337</td>
+<td align="right">209.4169</td>
+<td align="right">1.895990</td>
+<td align="right">0.1617201</td>
+</tr>
+<tr class="odd">
+<td align="left">drug:disease</td>
+<td align="right">6</td>
+<td align="right">707.2663</td>
+<td align="right">117.8777</td>
+<td align="right">1.067225</td>
+<td align="right">0.3958458</td>
+</tr>
+<tr class="even">
+<td align="left">Residuals</td>
+<td align="right">46</td>
+<td align="right">5080.8167</td>
+<td align="right">110.4525</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table></div>
+<p>And with some extra work, we can get a <code>Total</code> row to match the F table output by SAS.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lm_model</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">tidy</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">add_row</span><span class="op">(</span>term <span class="op">=</span> <span class="st">"Total"</span>, df <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">df</span><span class="op">)</span>, sumsq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">sumsq</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">term</th>
+<th align="right">df</th>
+<th align="right">sumsq</th>
+<th align="right">meansq</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">drug</td>
+<td align="right">3</td>
+<td align="right">3133.2385</td>
+<td align="right">1044.4128</td>
+<td align="right">9.455761</td>
+<td align="right">0.0000558</td>
+</tr>
+<tr class="even">
+<td align="left">disease</td>
+<td align="right">2</td>
+<td align="right">418.8337</td>
+<td align="right">209.4169</td>
+<td align="right">1.895990</td>
+<td align="right">0.1617201</td>
+</tr>
+<tr class="odd">
+<td align="left">drug:disease</td>
+<td align="right">6</td>
+<td align="right">707.2663</td>
+<td align="right">117.8777</td>
+<td align="right">1.067225</td>
+<td align="right">0.3958458</td>
+</tr>
+<tr class="even">
+<td align="left">Residuals</td>
+<td align="right">46</td>
+<td align="right">5080.8167</td>
+<td align="right">110.4525</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="right">57</td>
+<td align="right">9340.1552</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table></div>
+<p>Comparing this to the output in SAS, we see the following.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="linear-models.html#cb10-1" aria-hidden="true" tabindex="-1"></a>proc glm;</span>
+<span id="cb10-2"><a href="linear-models.html#cb10-2" aria-hidden="true" tabindex="-1"></a>   class drug disease;</span>
+<span id="cb10-3"><a href="linear-models.html#cb10-3" aria-hidden="true" tabindex="-1"></a>   model y<span class="ot">=</span>drug disease drug<span class="sc">*</span>disease <span class="sc">/</span> ss1 ss2 ss3 ss4;</span>
+<span id="cb10-4"><a href="linear-models.html#cb10-4" aria-hidden="true" tabindex="-1"></a>run;</span></code></pre></div>
+<div class="inline-figure"><img src="images/linear/sas-f-table.png" width="90%" style="display: block; margin: auto;"></div>
+</div>
+<div id="sums-of-squares-tables" class="section level3" number="7.2.4">
+<h3>
+<span class="header-section-number">7.2.4</span> Sums of Squares Tables<a class="anchor" aria-label="anchor" href="#sums-of-squares-tables"><i class="fas fa-link"></i></a>
+</h3>
+<p>In SAS, it is easy to find the tables for the variouse types of sums of squares calculations. Unfortunately, it is not easy to match this output in using functions from base R. However, the <code>rstatix</code> package offers a solution to produce these various sums of squares tables. Note that there does not appear to be a <code>Type IV SS</code> equivalent in R.</p>
+<div id="type-i" class="section level4" number="7.2.4.1">
+<h4>
+<span class="header-section-number">7.2.4.1</span> Type I<a class="anchor" aria-label="anchor" href="#type-i"><i class="fas fa-link"></i></a>
+</h4>
+<p>In R,</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df_disease</span> <span class="op">%&gt;%</span> 
+  <span class="fu">rstatix</span><span class="fu">::</span><span class="fu"><a href="https://rpkgs.datanovia.com/rstatix/reference/anova_test.html">anova_test</a></span><span class="op">(</span>
+    <span class="va">y</span> <span class="op">~</span> <span class="va">drug</span> <span class="op">+</span> <span class="va">disease</span> <span class="op">+</span> <span class="va">drug</span><span class="op">*</span><span class="va">disease</span>, 
+    type <span class="op">=</span> <span class="fl">1</span>, 
+    detailed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">rstatix</span><span class="fu">::</span><span class="fu"><a href="https://rpkgs.datanovia.com/rstatix/reference/anova_test.html">get_anova_table</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">Effect</th>
+<th align="right">DFn</th>
+<th align="right">DFd</th>
+<th align="right">SSn</th>
+<th align="right">SSd</th>
+<th align="right">F</th>
+<th align="right">p</th>
+<th align="left">p&lt;.05</th>
+<th align="right">ges</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">drug</td>
+<td align="right">3</td>
+<td align="right">46</td>
+<td align="right">3133.239</td>
+<td align="right">5080.817</td>
+<td align="right">9.456</td>
+<td align="right">5.58e-05</td>
+<td align="left">*</td>
+<td align="right">0.381</td>
+</tr>
+<tr class="even">
+<td align="left">disease</td>
+<td align="right">2</td>
+<td align="right">46</td>
+<td align="right">418.834</td>
+<td align="right">5080.817</td>
+<td align="right">1.896</td>
+<td align="right">1.62e-01</td>
+<td align="left"></td>
+<td align="right">0.076</td>
+</tr>
+<tr class="odd">
+<td align="left">drug:disease</td>
+<td align="right">6</td>
+<td align="right">46</td>
+<td align="right">707.266</td>
+<td align="right">5080.817</td>
+<td align="right">1.067</td>
+<td align="right">3.96e-01</td>
+<td align="left"></td>
+<td align="right">0.122</td>
+</tr>
+</tbody>
+</table></div>
+<p>And in SAS,</p>
+<div class="inline-figure"><img src="images/linear/sas-ss-type-1.png" width="75%" style="display: block; margin: auto;"></div>
+</div>
+<div id="type-ii" class="section level4" number="7.2.4.2">
+<h4>
+<span class="header-section-number">7.2.4.2</span> Type II<a class="anchor" aria-label="anchor" href="#type-ii"><i class="fas fa-link"></i></a>
+</h4>
+<p>In R,</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df_disease</span> <span class="op">%&gt;%</span> 
+  <span class="fu">rstatix</span><span class="fu">::</span><span class="fu"><a href="https://rpkgs.datanovia.com/rstatix/reference/anova_test.html">anova_test</a></span><span class="op">(</span>
+    <span class="va">y</span> <span class="op">~</span> <span class="va">drug</span> <span class="op">+</span> <span class="va">disease</span> <span class="op">+</span> <span class="va">drug</span><span class="op">*</span><span class="va">disease</span>, 
+    type <span class="op">=</span> <span class="fl">2</span>, 
+    detailed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">rstatix</span><span class="fu">::</span><span class="fu"><a href="https://rpkgs.datanovia.com/rstatix/reference/anova_test.html">get_anova_table</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">Effect</th>
+<th align="right">SSn</th>
+<th align="right">SSd</th>
+<th align="right">DFn</th>
+<th align="right">DFd</th>
+<th align="right">F</th>
+<th align="right">p</th>
+<th align="left">p&lt;.05</th>
+<th align="right">ges</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">drug</td>
+<td align="right">3063.433</td>
+<td align="right">5080.817</td>
+<td align="right">3</td>
+<td align="right">46</td>
+<td align="right">9.245</td>
+<td align="right">6.75e-05</td>
+<td align="left">*</td>
+<td align="right">0.376</td>
+</tr>
+<tr class="even">
+<td align="left">disease</td>
+<td align="right">418.834</td>
+<td align="right">5080.817</td>
+<td align="right">2</td>
+<td align="right">46</td>
+<td align="right">1.896</td>
+<td align="right">1.62e-01</td>
+<td align="left"></td>
+<td align="right">0.076</td>
+</tr>
+<tr class="odd">
+<td align="left">drug:disease</td>
+<td align="right">707.266</td>
+<td align="right">5080.817</td>
+<td align="right">6</td>
+<td align="right">46</td>
+<td align="right">1.067</td>
+<td align="right">3.96e-01</td>
+<td align="left"></td>
+<td align="right">0.122</td>
+</tr>
+</tbody>
+</table></div>
+<p>And in SAS,</p>
+<div class="inline-figure"><img src="images/linear/sas-ss-type-2.png" width="75%" style="display: block; margin: auto;"></div>
+</div>
+<div id="type-iii" class="section level4" number="7.2.4.3">
+<h4>
+<span class="header-section-number">7.2.4.3</span> Type III<a class="anchor" aria-label="anchor" href="#type-iii"><i class="fas fa-link"></i></a>
+</h4>
+<p>In R,</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df_disease</span> <span class="op">%&gt;%</span> 
+  <span class="fu">rstatix</span><span class="fu">::</span><span class="fu"><a href="https://rpkgs.datanovia.com/rstatix/reference/anova_test.html">anova_test</a></span><span class="op">(</span>
+    <span class="va">y</span> <span class="op">~</span> <span class="va">drug</span> <span class="op">+</span> <span class="va">disease</span> <span class="op">+</span> <span class="va">drug</span><span class="op">*</span><span class="va">disease</span>, 
+    type <span class="op">=</span> <span class="fl">3</span>, 
+    detailed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">rstatix</span><span class="fu">::</span><span class="fu"><a href="https://rpkgs.datanovia.com/rstatix/reference/anova_test.html">get_anova_table</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">Effect</th>
+<th align="right">SSn</th>
+<th align="right">SSd</th>
+<th align="right">DFn</th>
+<th align="right">DFd</th>
+<th align="right">F</th>
+<th align="right">p</th>
+<th align="left">p&lt;.05</th>
+<th align="right">ges</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">20037.613</td>
+<td align="right">5080.817</td>
+<td align="right">1</td>
+<td align="right">46</td>
+<td align="right">181.414</td>
+<td align="right">0.00e+00</td>
+<td align="left">*</td>
+<td align="right">0.798</td>
+</tr>
+<tr class="even">
+<td align="left">drug</td>
+<td align="right">2997.472</td>
+<td align="right">5080.817</td>
+<td align="right">3</td>
+<td align="right">46</td>
+<td align="right">9.046</td>
+<td align="right">8.09e-05</td>
+<td align="left">*</td>
+<td align="right">0.371</td>
+</tr>
+<tr class="odd">
+<td align="left">disease</td>
+<td align="right">415.873</td>
+<td align="right">5080.817</td>
+<td align="right">2</td>
+<td align="right">46</td>
+<td align="right">1.883</td>
+<td align="right">1.64e-01</td>
+<td align="left"></td>
+<td align="right">0.076</td>
+</tr>
+<tr class="even">
+<td align="left">drug:disease</td>
+<td align="right">707.266</td>
+<td align="right">5080.817</td>
+<td align="right">6</td>
+<td align="right">46</td>
+<td align="right">1.067</td>
+<td align="right">3.96e-01</td>
+<td align="left"></td>
+<td align="right">0.122</td>
+</tr>
+</tbody>
+</table></div>
+<p>And in SAS,</p>
+<div class="inline-figure"><img src="images/linear/sas-ss-type-3.png" width="75%" style="display: block; margin: auto;"></div>
+</div>
+<div id="type-iv" class="section level4" number="7.2.4.4">
+<h4>
+<span class="header-section-number">7.2.4.4</span> Type IV<a class="anchor" aria-label="anchor" href="#type-iv"><i class="fas fa-link"></i></a>
+</h4>
+<p>In SAS,</p>
+<div class="inline-figure"><img src="images/linear/sas-ss-type-4.png" width="75%" style="display: block; margin: auto;"></div>
+<p>In R there is no equivalent operation to the <code>Type IV</code> sums of squares calculation in SAS.</p>
+</div>
+</div>
+<div id="wrap-up---sums-of-squares" class="section level3" number="7.2.5">
+<h3>
+<span class="header-section-number">7.2.5</span> Wrap Up - Sums of Squares<a class="anchor" aria-label="anchor" href="#wrap-up---sums-of-squares"><i class="fas fa-link"></i></a>
+</h3>
 </div>
 </div>
 <div id="contrasts" class="section level2" number="7.3">
@@ -91,10 +482,7 @@
 <h3>
 <span class="header-section-number">7.3.1</span> Getting Started<a class="anchor" aria-label="anchor" href="#getting-started-2"><i class="fas fa-link"></i></a>
 </h3>
-<p>To demonstrate contrasts, we’ll be using a created data frame called <code>df_trial</code>. We see that the <code>drug</code> variable has three levels, <em>A</em>, <em>C</em> and <em>E</em>.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">levels_drug</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">df_trial</span><span class="op">$</span><span class="va">drug</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">df_trial</span><span class="op">)</span></code></pre></div>
+<p>To demonstrate contrasts, we’ll create a data frame called <code>df_trial</code>. We see that the <code>drug</code> variable has three levels, <em>A</em>, <em>C</em> and <em>E</em>.</p>
 <pre><code>##  drug        pre             post       sex   
 ##  A:10   Min.   : 3.00   Min.   : 0.00   M:15  
 ##  C:10   1st Qu.: 7.00   1st Qu.: 2.00   F:15  
@@ -102,8 +490,6 @@
 ##         Mean   :10.73   Mean   : 7.90         
 ##         3rd Qu.:13.75   3rd Qu.:12.75         
 ##         Max.   :21.00   Max.   :23.00</code></pre>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">glimpse</span><span class="op">(</span><span class="va">df_trial</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 30
 ## Columns: 4
 ## $ drug &lt;fct&gt; A, A, A, A, A, A, A, A, A, A, C, C, C, C, C, C, C, C, C, C, E, E,~
@@ -111,13 +497,13 @@
 ## $ post &lt;dbl&gt; 6, 0, 2, 8, 11, 4, 13, 1, 8, 0, 0, 2, 3, 1, 18, 4, 14, 9, 1, 9, 1~
 ## $ sex  &lt;fct&gt; M, F, M, F, M, F, M, F, M, F, M, F, M, F, M, F, M, F, M, F, M, F,~</code></pre>
 <p>In order to work with these levels as contrasts, we can use one of the pre-existing R functions to create the identity matrix for this factor variable. The <code>contr.treatment</code> definition is the default one that R uses, while the <code>contr.SAS</code> is the definition that SAS uses by default.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/contrast.html">contr.treatment</a></span><span class="op">(</span><span class="va">levels_drug</span><span class="op">)</span></code></pre></div>
 <pre><code>##   C E
 ## A 0 0
 ## C 1 0
 ## E 0 1</code></pre>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/contrast.html">contr.SAS</a></span><span class="op">(</span><span class="va">levels_drug</span><span class="op">)</span></code></pre></div>
 <pre><code>##   A C
 ## A 1 0
@@ -130,7 +516,7 @@
 <span class="header-section-number">7.3.2</span> Using Contrasts in R<a class="anchor" aria-label="anchor" href="#using-contrasts-in-r"><i class="fas fa-link"></i></a>
 </h3>
 <p>There are many ways to work with contrasts in R, but here we’re only going to focus on defining contrasts in the modeling function. In this example, we’re creating a linear model to predict post values from the pre and drug values. The only difference between the two is in the contrasts argument. In one case, we’re using the R default, and in the other we’re using the SAS default.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">model_trt</span> <span class="op">&lt;-</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">post</span> <span class="op">~</span> <span class="va">pre</span> <span class="op">+</span> <span class="va">drug</span>, data <span class="op">=</span> <span class="va">df_trial</span>,
      contrasts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>drug <span class="op">=</span> <span class="va">contr.treatment</span><span class="op">)</span><span class="op">)</span>
@@ -139,7 +525,7 @@
   <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">post</span> <span class="op">~</span> <span class="va">pre</span> <span class="op">+</span> <span class="va">drug</span>, data <span class="op">=</span> <span class="va">df_trial</span>,
      contrasts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>drug <span class="op">=</span> <span class="va">contr.SAS</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Comparing the output for these two models, we see that differ in which drug level is being used as the reference baseline.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tidy</span><span class="op">(</span><span class="va">model_trt</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 5
 ##   term        estimate std.error statistic    p.value
@@ -148,7 +534,7 @@
 ## 2 pre            0.987     0.164    6.00   0.00000245
 ## 3 drug2          0.109     1.80     0.0607 0.952     
 ## 4 drug3          3.45      1.89     1.83   0.0793</code></pre>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tidy</span><span class="op">(</span><span class="va">model_sas</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 5
 ##   term        estimate std.error statistic    p.value
@@ -158,11 +544,11 @@
 ## 3 drug1         -3.45      1.89     -1.83  0.0793    
 ## 4 drug2         -3.34      1.85     -1.80  0.0835</code></pre>
 <p>We can define a custom contrast as well. In this case, we are comparing <em>A</em> to <em>E</em>, where <em>E</em> is the baseline group. As is typical of contrasts, the values must sum to 0, where negative numbers represent the baseline groups.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">post</span> <span class="op">~</span> <span class="va">pre</span> <span class="op">+</span> <span class="va">drug</span>, data <span class="op">=</span> <span class="va">df_trial</span>,
    constrasts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>drug <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"C"</span> <span class="op">=</span> <span class="st">"0"</span>, <span class="st">"E"</span> <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>It is possible to combine contrasts using <code>cbind</code>. Notice here that contrast definitions don’t require level names to be assigned, as long as the order of the levels is maintained.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">contrast_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,  <span class="fl">0</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>
 <span class="va">contrast_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">2</span>,  <span class="fl">1</span><span class="op">)</span>
 
@@ -177,17 +563,17 @@
 </h3>
 <p>The <code>emmeans</code> package makes working with contrasts much easier. In fact, this is the method that we recommend when trying to match contrast output between SAS and R.</p>
 <p>We begin by defining some models.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">model_lm</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">post</span> <span class="op">~</span> <span class="va">pre</span> <span class="op">+</span> <span class="va">drug</span> <span class="op">+</span> <span class="va">sex</span>, data <span class="op">=</span> <span class="va">df_trial</span><span class="op">)</span>
 <span class="va">model_av</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">post</span> <span class="op">~</span> <span class="va">pre</span> <span class="op">+</span> <span class="va">drug</span> <span class="op">+</span> <span class="va">sex</span>, data <span class="op">=</span> <span class="va">df_trial</span><span class="op">)</span>
 <span class="va">model_gm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">post</span> <span class="op">~</span> <span class="va">pre</span> <span class="op">+</span> <span class="va">drug</span> <span class="op">+</span> <span class="va">sex</span>, data <span class="op">=</span> <span class="va">df_trial</span><span class="op">)</span></code></pre></div>
 <p>Then we convert these models to <code>emmeans</code> models. In the <code>emmeans</code> function we can specify which variables we want to display estimated marginal means for.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">model_lm</span> <span class="op">%&gt;%</span> <span class="fu">emmeans</span><span class="op">(</span>specs <span class="op">=</span> <span class="st">"drug"</span><span class="op">)</span>
 <span class="va">model_av</span> <span class="op">%&gt;%</span> <span class="fu">emmeans</span><span class="op">(</span>specs <span class="op">=</span> <span class="st">"drug"</span>, by <span class="op">=</span> <span class="st">"sex"</span><span class="op">)</span>
 <span class="va">model_gm</span> <span class="op">%&gt;%</span> <span class="fu">emmeans</span><span class="op">(</span>specs <span class="op">=</span> <span class="op">~</span> <span class="va">drug</span> <span class="op">|</span> <span class="va">sex</span><span class="op">)</span></code></pre></div>
 <p>Or, we can define some common contrasts with the <code>contrast</code> function.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># All Pairwise Comparisons</span>
 <span class="va">model_lm</span> <span class="op">%&gt;%</span> 
   <span class="fu">emmeans</span><span class="op">(</span><span class="st">"drug"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -198,7 +584,7 @@
   <span class="fu">emmeans</span><span class="op">(</span><span class="st">"drug"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">contrast</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"trt.vs.ctrl"</span><span class="op">)</span>  </code></pre></div>
 <p>We can also control the reference group, or reverse the contrast order using the arguments in the <code>contrast</code> function.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">model_lm</span> <span class="op">%&gt;%</span> 
   <span class="fu">emmeans</span><span class="op">(</span><span class="st">"drug"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">contrast</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"trt.vs.ctrl"</span>, ref <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>     
@@ -207,7 +593,7 @@
   <span class="fu">emmeans</span><span class="op">(</span><span class="st">"drug"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">contrast</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"trt.vs.ctrl"</span>, rev <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>     </code></pre></div>
 <p>Custom contrasts can be defined as well.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">model_lm</span> <span class="op">%&gt;%</span> 
   <span class="fu">emmeans</span><span class="op">(</span><span class="st">"drug"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">contrast</span><span class="op">(</span>method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
@@ -222,15 +608,15 @@
 </h3>
 <p>It is recommended to use the <code>emmeans</code> package when attempting to match contrasts between R and SAS. In SAS, all contrasts must be manually defined, whereas in R, we have many ways to use pre-existing contrast definitions. The <code>emmeans</code> package makes simplifies this process, and provides syntax that is similar to the syntax of SAS.</p>
 <p>This is how we would define a contrast in SAS.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="linear-models.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In SAS</span></span>
-<span id="cb21-2"><a href="linear-models.html#cb21-2" aria-hidden="true" tabindex="-1"></a>proc glm data<span class="ot">=</span>work.mycsv;</span>
-<span id="cb21-3"><a href="linear-models.html#cb21-3" aria-hidden="true" tabindex="-1"></a>   class drug;</span>
-<span id="cb21-4"><a href="linear-models.html#cb21-4" aria-hidden="true" tabindex="-1"></a>   model post <span class="ot">=</span> drug pre <span class="sc">/</span> solution;</span>
-<span id="cb21-5"><a href="linear-models.html#cb21-5" aria-hidden="true" tabindex="-1"></a>   estimate <span class="st">'C vs A'</span>  drug <span class="sc">-</span><span class="dv">1</span>  <span class="dv">1</span> <span class="dv">0</span>;</span>
-<span id="cb21-6"><a href="linear-models.html#cb21-6" aria-hidden="true" tabindex="-1"></a>   estimate <span class="st">'E vs CA'</span> drug <span class="sc">-</span><span class="dv">1</span> <span class="sc">-</span><span class="dv">1</span> <span class="dv">2</span>;</span>
-<span id="cb21-7"><a href="linear-models.html#cb21-7" aria-hidden="true" tabindex="-1"></a>run;</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="linear-models.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In SAS</span></span>
+<span id="cb32-2"><a href="linear-models.html#cb32-2" aria-hidden="true" tabindex="-1"></a>proc glm data<span class="ot">=</span>work.mycsv;</span>
+<span id="cb32-3"><a href="linear-models.html#cb32-3" aria-hidden="true" tabindex="-1"></a>   class drug;</span>
+<span id="cb32-4"><a href="linear-models.html#cb32-4" aria-hidden="true" tabindex="-1"></a>   model post <span class="ot">=</span> drug pre <span class="sc">/</span> solution;</span>
+<span id="cb32-5"><a href="linear-models.html#cb32-5" aria-hidden="true" tabindex="-1"></a>   estimate <span class="st">'C vs A'</span>  drug <span class="sc">-</span><span class="dv">1</span>  <span class="dv">1</span> <span class="dv">0</span>;</span>
+<span id="cb32-6"><a href="linear-models.html#cb32-6" aria-hidden="true" tabindex="-1"></a>   estimate <span class="st">'E vs CA'</span> drug <span class="sc">-</span><span class="dv">1</span> <span class="sc">-</span><span class="dv">1</span> <span class="dv">2</span>;</span>
+<span id="cb32-7"><a href="linear-models.html#cb32-7" aria-hidden="true" tabindex="-1"></a>run;</span></code></pre></div>
 <p>And this is how we would define the same contrast in R, using the <code>emmeans</code> package.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">post</span> <span class="op">~</span> <span class="va">pre</span> <span class="op">+</span> <span class="va">drug</span>, data <span class="op">=</span> <span class="va">df_trial</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">emmeans</span><span class="op">(</span><span class="st">"drug"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">contrast</span><span class="op">(</span>method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
@@ -238,12 +624,17 @@
     <span class="st">"E vs CA"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>
   <span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Note, however, that there are some cases where the scale of the parameter estimates between SAS and R is off, though the test statistics and p-values are identical. In these cases, we can adjust the SAS code to include a divisor. As far as we can tell, this difference only occurs when using the predefined Base R contrast methods like <code>contr.helmert</code>.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="linear-models.html#cb23-1" aria-hidden="true" tabindex="-1"></a>proc glm data<span class="ot">=</span>work.mycsv;</span>
-<span id="cb23-2"><a href="linear-models.html#cb23-2" aria-hidden="true" tabindex="-1"></a>   class drug;</span>
-<span id="cb23-3"><a href="linear-models.html#cb23-3" aria-hidden="true" tabindex="-1"></a>   model post <span class="ot">=</span> drug pre <span class="sc">/</span> solution;</span>
-<span id="cb23-4"><a href="linear-models.html#cb23-4" aria-hidden="true" tabindex="-1"></a>   estimate <span class="st">'C vs A'</span>  drug <span class="sc">-</span><span class="dv">1</span>  <span class="dv">1</span> <span class="dv">0</span> <span class="sc">/</span> divisor <span class="ot">=</span> <span class="dv">2</span>;</span>
-<span id="cb23-5"><a href="linear-models.html#cb23-5" aria-hidden="true" tabindex="-1"></a>   estimate <span class="st">'E vs CA'</span> drug <span class="sc">-</span><span class="dv">1</span> <span class="sc">-</span><span class="dv">1</span> <span class="dv">2</span> <span class="sc">/</span> divisor <span class="ot">=</span> <span class="dv">6</span>;</span>
-<span id="cb23-6"><a href="linear-models.html#cb23-6" aria-hidden="true" tabindex="-1"></a>run;</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="linear-models.html#cb34-1" aria-hidden="true" tabindex="-1"></a>proc glm data<span class="ot">=</span>work.mycsv;</span>
+<span id="cb34-2"><a href="linear-models.html#cb34-2" aria-hidden="true" tabindex="-1"></a>   class drug;</span>
+<span id="cb34-3"><a href="linear-models.html#cb34-3" aria-hidden="true" tabindex="-1"></a>   model post <span class="ot">=</span> drug pre <span class="sc">/</span> solution;</span>
+<span id="cb34-4"><a href="linear-models.html#cb34-4" aria-hidden="true" tabindex="-1"></a>   estimate <span class="st">'C vs A'</span>  drug <span class="sc">-</span><span class="dv">1</span>  <span class="dv">1</span> <span class="dv">0</span> <span class="sc">/</span> divisor <span class="ot">=</span> <span class="dv">2</span>;</span>
+<span id="cb34-5"><a href="linear-models.html#cb34-5" aria-hidden="true" tabindex="-1"></a>   estimate <span class="st">'E vs CA'</span> drug <span class="sc">-</span><span class="dv">1</span> <span class="sc">-</span><span class="dv">1</span> <span class="dv">2</span> <span class="sc">/</span> divisor <span class="ot">=</span> <span class="dv">6</span>;</span>
+<span id="cb34-6"><a href="linear-models.html#cb34-6" aria-hidden="true" tabindex="-1"></a>run;</span></code></pre></div>
+</div>
+<div id="wrap-up---contrasts" class="section level3" number="7.3.5">
+<h3>
+<span class="header-section-number">7.3.5</span> Wrap Up - Contrasts<a class="anchor" aria-label="anchor" href="#wrap-up---contrasts"><i class="fas fa-link"></i></a>
+</h3>
 
 </div>
 </div>
@@ -259,7 +650,13 @@
 <a class="nav-link" href="#topic-1-bv"><span class="header-section-number">7.1</span> Topic 1 (BV)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#getting-started"><span class="header-section-number">7.1.1</span> Getting Started</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#sums-of-squares-types"><span class="header-section-number">7.2</span> Sums of Squares Types</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#getting-started-1"><span class="header-section-number">7.2.1</span> Getting Started</a></li></ul>
+<a class="nav-link" href="#sums-of-squares-types"><span class="header-section-number">7.2</span> Sums of Squares Types</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#getting-started-1"><span class="header-section-number">7.2.1</span> Getting Started</a></li>
+<li><a class="nav-link" href="#the-model"><span class="header-section-number">7.2.2</span> The Model</a></li>
+<li><a class="nav-link" href="#the-results"><span class="header-section-number">7.2.3</span> The Results</a></li>
+<li><a class="nav-link" href="#sums-of-squares-tables"><span class="header-section-number">7.2.4</span> Sums of Squares Tables</a></li>
+<li><a class="nav-link" href="#wrap-up---sums-of-squares"><span class="header-section-number">7.2.5</span> Wrap Up - Sums of Squares</a></li>
+</ul>
 </li>
 <li>
 <a class="nav-link" href="#contrasts"><span class="header-section-number">7.3</span> Contrasts</a><ul class="nav navbar-nav">
@@ -267,6 +664,7 @@
 <li><a class="nav-link" href="#using-contrasts-in-r"><span class="header-section-number">7.3.2</span> Using Contrasts in R</a></li>
 <li><a class="nav-link" href="#easy-contrasts-in-r-with-emmeans"><span class="header-section-number">7.3.3</span> Easy Contrasts in R with emmeans</a></li>
 <li><a class="nav-link" href="#matching-contrasts-r-and-sas"><span class="header-section-number">7.3.4</span> Matching Contrasts: R and SAS</a></li>
+<li><a class="nav-link" href="#wrap-up---contrasts"><span class="header-section-number">7.3.5</span> Wrap Up - Contrasts</a></li>
 </ul>
 </li>
 </ul>

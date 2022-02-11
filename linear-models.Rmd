@@ -1,11 +1,13 @@
 # Linear Models
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
 library(emmeans)
 library(broom)
+library(knitr)
+
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 
 df_trial <- 
   read_csv(
@@ -14,6 +16,13 @@ df_trial <-
                      pre  = col_double(), 
                      post = col_double(), 
                      sex  = col_factor()))
+
+df_disease <- 
+  read_csv(
+    file = "data/linear/disease.csv",
+    col_types = cols(drug    = col_factor(),
+                     disease = col_factor(),
+                     y       = col_double()))
 ```
 
 ## Topic 1 (BV)
@@ -24,13 +33,153 @@ df_trial <-
 
 ### Getting Started
 
+To demonstrate the various types of sums of squares, we'll create a data frame called `df_disease` taken from the SAS documentation (__reference__). The summary of the data is shown.
+
+```{r, echo=FALSE}
+df_disease %>% head(3)
+summary(df_disease)
+```
+
+### The Model
+
+For this example, we're testing for a significant difference in `stem_length` using ANOVA.  In R, we're using `lm()` to run the ANOVA, and then using `broom::glance()` and `broom::tidy()` to view the results in a table format.
+
+```{r}
+lm_model <- lm(y ~ drug + disease + drug*disease, df_disease)
+```
+
+The `glance` function gives us a summary of the model diagnostic values.
+
+```{r}
+lm_model %>% glance()
+```
+
+The `tidy` function gives a summary of the model results.
+
+```{r}
+lm_model %>% tidy()
+```
+
+
+### The Results
+
+You'll see that R print the individual results for each level of the drug and disease interaction.  We can get the combined F table in R using the `anova()` function on the model object.
+
+```{r}
+lm_model %>% 
+  anova() %>% 
+  tidy() %>% 
+  kable()
+```
+
+And with some extra work, we can get a `Total` row to match the F table output by SAS.
+
+```{r}
+lm_model %>%
+  anova() %>%
+  tidy() %>%
+  add_row(term = "Total", df = sum(.$df), sumsq = sum(.$sumsq)) %>% 
+  kable()
+```
+
+Comparing this to the output in SAS, we see the following.
+
+```{r, eval=FALSE}
+proc glm;
+   class drug disease;
+   model y=drug disease drug*disease / ss1 ss2 ss3 ss4;
+run;
+```
+
+```{r echo=FALSE, fig.align='center', out.width="90%"}
+knitr::include_graphics("images/linear/sas-f-table.png")
+```
+
+### Sums of Squares Tables
+
+In SAS, it is easy to find the tables for the variouse types of sums of squares calculations. Unfortunately, it is not easy to match this output in using functions from base R.  However, the `rstatix` package offers a solution to produce these various sums of squares tables.  Note that there does not appear to be a `Type IV SS` equivalent in R.  
+
+#### Type I
+
+In R,
+
+```{r message=FALSE, warning=FALSE}
+df_disease %>% 
+  rstatix::anova_test(
+    y ~ drug + disease + drug*disease, 
+    type = 1, 
+    detailed = TRUE) %>% 
+  rstatix::get_anova_table() %>% 
+  kable()
+```
+
+And in SAS, 
+
+```{r, echo=FALSE, fig.align='center', out.width="75%"}
+knitr::include_graphics("images/linear/sas-ss-type-1.png")
+```
+
+
+#### Type II
+
+In R,
+
+```{r message=FALSE, warning=FALSE}
+df_disease %>% 
+  rstatix::anova_test(
+    y ~ drug + disease + drug*disease, 
+    type = 2, 
+    detailed = TRUE) %>% 
+  rstatix::get_anova_table() %>% 
+  kable()
+```
+
+And in SAS, 
+
+```{r, echo=FALSE, fig.align='center', out.width="75%"}
+knitr::include_graphics("images/linear/sas-ss-type-2.png")
+```
+
+
+#### Type III
+
+In R,
+
+```{r message=FALSE, warning=FALSE}
+df_disease %>% 
+  rstatix::anova_test(
+    y ~ drug + disease + drug*disease, 
+    type = 3, 
+    detailed = TRUE) %>% 
+  rstatix::get_anova_table() %>% 
+  kable()
+```
+
+And in SAS, 
+
+```{r, echo=FALSE, fig.align='center', out.width="75%"}
+knitr::include_graphics("images/linear/sas-ss-type-3.png")
+```
+
+#### Type IV
+
+In SAS,
+
+```{r, echo=FALSE, fig.align='center', out.width="75%"}
+knitr::include_graphics("images/linear/sas-ss-type-4.png")
+```
+
+In R there is no equivalent operation to the `Type IV` sums of squares calculation in SAS.
+
+### Wrap Up - Sums of Squares
+
 ## Contrasts
 
 ### Getting Started
 
-To demonstrate contrasts, we'll be using a created data frame called `df_trial`. We see that the `drug` variable has three levels, _A_, _C_ and _E_.
+To demonstrate contrasts, we'll create a data frame called `df_trial`. We see that the `drug` variable has three levels, _A_, _C_ and _E_.
 
-```{r}
+```{r, echo=FALSE}
 levels_drug <- levels(df_trial$drug)
 summary(df_trial)
 glimpse(df_trial)
@@ -182,3 +331,4 @@ proc glm data=work.mycsv;
 run;
 ```
 
+### Wrap Up - Contrasts
