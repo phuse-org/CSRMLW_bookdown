@@ -76,19 +76,19 @@ With results available for SAS and R model fits, we turn our attention to genera
 
 For the extracted LS-means
 
-<img src="mixed-models_files/figure-html/unnamed-chunk-6-1.png" width="100%" /><img src="mixed-models_files/figure-html/unnamed-chunk-6-2.png" width="100%" /><img src="mixed-models_files/figure-html/unnamed-chunk-6-3.png" width="100%" /><img src="mixed-models_files/figure-html/unnamed-chunk-6-4.png" width="100%" />
+<img src="mixed-models_files/figure-html/unnamed-chunk-5-1.png" width="100%" /><img src="mixed-models_files/figure-html/unnamed-chunk-5-2.png" width="100%" /><img src="mixed-models_files/figure-html/unnamed-chunk-5-3.png" width="100%" /><img src="mixed-models_files/figure-html/unnamed-chunk-5-4.png" width="100%" />
 
 and corresponding SEs
 
-<img src="mixed-models_files/figure-html/unnamed-chunk-7-1.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-7-2.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-7-3.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-7-4.png" width="672" />
+<img src="mixed-models_files/figure-html/unnamed-chunk-6-1.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-6-2.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-6-3.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-6-4.png" width="672" />
 
 For the derived contrasts
 
-<img src="mixed-models_files/figure-html/unnamed-chunk-8-1.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-8-2.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-8-3.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-8-4.png" width="672" />
+<img src="mixed-models_files/figure-html/unnamed-chunk-7-1.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-7-2.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-7-3.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-7-4.png" width="672" />
 
 and corresponding 95%CI widths
 
-<img src="mixed-models_files/figure-html/unnamed-chunk-9-1.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-9-2.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-9-3.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-9-4.png" width="672" />
+<img src="mixed-models_files/figure-html/unnamed-chunk-8-1.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-8-2.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-8-3.png" width="672" /><img src="mixed-models_files/figure-html/unnamed-chunk-8-4.png" width="672" />
 
 ### Analysis of SAS and R Comparison
 

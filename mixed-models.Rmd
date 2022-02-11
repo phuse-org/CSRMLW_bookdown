@@ -10,7 +10,9 @@ This document focuses on a comparison of results generated using a Mixed Model f
 
 In SAS the following code was used (assessments at `avisitn=0` should also be removed from the response variable):
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+
 plots <- readRDS("images/mixed/plots.rds")
 ```
 
