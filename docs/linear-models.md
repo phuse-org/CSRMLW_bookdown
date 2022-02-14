@@ -233,8 +233,6 @@ In SAS,
 
 In R there is no equivalent operation to the `Type IV` sums of squares calculation in SAS.
 
-### Wrap Up - Sums of Squares
-
 ## Contrasts
 
 ### Getting Started
@@ -459,5 +457,3 @@ proc glm data=work.mycsv;
    estimate 'E vs CA' drug -1 -1 2 / divisor = 6;
 run;
 ```
-
-### Wrap Up - Contrasts

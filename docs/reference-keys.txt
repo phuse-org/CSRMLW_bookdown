@@ -2,9 +2,11 @@ introduction
 motivation
 background
 other-readings
-available-resources
-contributing-via-github
-wip-development-feedback
+how-to-contribute-to-this-project
+using-github
+contributing-via-github-website
+adding-images-and-data
+additional-resources
 use-cases
 wip-notes
 framework
@@ -26,13 +28,11 @@ type-i
 type-ii
 type-iii
 type-iv
-wrap-up---sums-of-squares
 contrasts
 getting-started-2
 using-contrasts-in-r
 easy-contrasts-in-r-with-emmeans
 matching-contrasts-r-and-sas
-wrap-up---contrasts
 mixed-models
 repeated-measures
 introduction-1
@@ -65,7 +65,3 @@ odds-ratio
 homogenity-test
 summary-and-recommendation
 references
-bookdown-template-title-of-chapter
-title-of-sub-section
-title-of-sub-section-1
-title-of-sub-section-2
