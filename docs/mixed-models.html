@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>9 Mixed Models | Clinical Statistical Reporting in a Multilingual World</title>
+<title>6 Mixed Models | Clinical Statistical Reporting in a Multilingual World</title>
 <meta name="author" content="PHUSE Whitepaper Team">
-<meta name="description" content="9.1 Repeated Measures  9.1.1 Introduction This document focuses on a comparison of results generated using a Mixed Model for Repeated Measures (MMRM) in SAS and R. Data for the comparison was the...">
+<meta name="description" content="6.1 Repeated Measures  6.1.1 Introduction This document focuses on a comparison of results generated using a Mixed Model for Repeated Measures (MMRM) in SAS and R. Data for the comparison was the...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="9 Mixed Models | Clinical Statistical Reporting in a Multilingual World">
+<meta property="og:title" content="6 Mixed Models | Clinical Statistical Reporting in a Multilingual World">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/phuse-org/mixed-models.html">
-<meta property="og:description" content="9.1 Repeated Measures  9.1.1 Introduction This document focuses on a comparison of results generated using a Mixed Model for Repeated Measures (MMRM) in SAS and R. Data for the comparison was the...">
+<meta property="og:description" content="6.1 Repeated Measures  6.1.1 Introduction This document focuses on a comparison of results generated using a Mixed Model for Repeated Measures (MMRM) in SAS and R. Data for the comparison was the...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="9 Mixed Models | Clinical Statistical Reporting in a Multilingual World">
-<meta name="twitter:description" content="9.1 Repeated Measures  9.1.1 Introduction This document focuses on a comparison of results generated using a Mixed Model for Repeated Measures (MMRM) in SAS and R. Data for the comparison was the...">
+<meta name="twitter:title" content="6 Mixed Models | Clinical Statistical Reporting in a Multilingual World">
+<meta name="twitter:description" content="6.1 Repeated Measures  6.1.1 Introduction This document focuses on a comparison of results generated using a Mixed Model for Repeated Measures (MMRM) in SAS and R. Data for the comparison was the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -42,16 +42,19 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
 <li><a class="" href="introduction.html"><span class="header-section-number">1</span> Introduction</a></li>
-<li><a class="" href="how-to-contribute-to-this-project.html"><span class="header-section-number">2</span> How to Contribute to this Project</a></li>
-<li><a class="" href="additional-resources.html"><span class="header-section-number">3</span> Additional Resources</a></li>
-<li><a class="" href="use-cases.html"><span class="header-section-number">4</span> Use Cases</a></li>
-<li><a class="" href="framework.html"><span class="header-section-number">5</span> Framework</a></li>
-<li><a class="" href="in-depth.html"><span class="header-section-number">6</span> In Depth</a></li>
-<li><a class="" href="summary-statistics.html"><span class="header-section-number">7</span> Summary Statistics</a></li>
-<li><a class="" href="linear-models.html"><span class="header-section-number">8</span> Linear Models</a></li>
-<li><a class="active" href="mixed-models.html"><span class="header-section-number">9</span> Mixed Models</a></li>
-<li><a class="" href="survival-models.html"><span class="header-section-number">10</span> Survival Models</a></li>
-<li><a class="" href="cochran-mantel-haenszel-test.html"><span class="header-section-number">11</span> Cochran-Mantel-Haenszel Test</a></li>
+<li><a class="" href="framework.html"><span class="header-section-number">2</span> Framework</a></li>
+<li class="book-part">Use Cases</li>
+<li><a class="" href="usecase-intro.html">Introduction</a></li>
+<li><a class="" href="general-notes.html"><span class="header-section-number">3</span> General Notes</a></li>
+<li><a class="" href="summary-statistics.html"><span class="header-section-number">4</span> Summary Statistics</a></li>
+<li><a class="" href="linear-models.html"><span class="header-section-number">5</span> Linear Models</a></li>
+<li><a class="active" href="mixed-models.html"><span class="header-section-number">6</span> Mixed Models</a></li>
+<li><a class="" href="survival-models.html"><span class="header-section-number">7</span> Survival Models</a></li>
+<li><a class="" href="cochran-mantel-haenszel-test.html"><span class="header-section-number">8</span> Cochran Mantel Haenszel Test</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="how-to-contribute-to-this-project.html"><span class="header-section-number">9</span> How to Contribute to this Project</a></li>
+<li><a class="" href="additional-resources.html"><span class="header-section-number">10</span> Additional Resources</a></li>
+<li><a class="" href="references-1.html"><span class="header-section-number">11</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -59,22 +62,22 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="mixed-models" class="section level1" number="9">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="mixed-models" class="section level1" number="6">
 <h1>
-<span class="header-section-number">9</span> Mixed Models<a class="anchor" aria-label="anchor" href="#mixed-models"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6</span> Mixed Models<a class="anchor" aria-label="anchor" href="#mixed-models"><i class="fas fa-link"></i></a>
 </h1>
-<div id="repeated-measures" class="section level2" number="9.1">
+<div id="repeated-measures" class="section level2" number="6.1">
 <h2>
-<span class="header-section-number">9.1</span> Repeated Measures<a class="anchor" aria-label="anchor" href="#repeated-measures"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1</span> Repeated Measures<a class="anchor" aria-label="anchor" href="#repeated-measures"><i class="fas fa-link"></i></a>
 </h2>
-<div id="introduction-1" class="section level3" number="9.1.1">
+<div id="introduction-1" class="section level3" number="6.1.1">
 <h3>
-<span class="header-section-number">9.1.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>This document focuses on a comparison of results generated using a Mixed Model for Repeated Measures (MMRM) in SAS and R. Data for the comparison was the lab ADaM dataset adlbh.xpt from the Phuse Pilot Study. Results were generated for each lab parameter and time point in the dataset using three different covariance structures, i.e. unstructured, compound symmetry and autoregressive of first order (AR(1)).</p>
-<div id="fitting-the-mmrm-in-sas" class="section level4" number="9.1.1.1">
+<div id="fitting-the-mmrm-in-sas" class="section level4" number="6.1.1.1">
 <h4>
-<span class="header-section-number">9.1.1.1</span> Fitting the MMRM in SAS<a class="anchor" aria-label="anchor" href="#fitting-the-mmrm-in-sas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1.1.1</span> Fitting the MMRM in SAS<a class="anchor" aria-label="anchor" href="#fitting-the-mmrm-in-sas"><i class="fas fa-link"></i></a>
 </h4>
 <p>In SAS the following code was used (assessments at <code>avisitn=0</code> should also be removed from the response variable):</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="mixed-models.html#cb35-1" aria-hidden="true" tabindex="-1"></a>proc mixed data<span class="ot">=</span>adlbh;</span>
@@ -89,13 +92,13 @@
 <p>where the macro variable <code>covar</code> could be <code>UN</code>, <code>CS</code> or <code>AR(1)</code>. The results were stored in .csv files that were post-processed in R and compared with the results from R.</p>
 </div>
 </div>
-<div id="fitting-the-mmrm-in-r" class="section level3" number="9.1.2">
+<div id="fitting-the-mmrm-in-r" class="section level3" number="6.1.2">
 <h3>
-<span class="header-section-number">9.1.2</span> Fitting the MMRM in R<a class="anchor" aria-label="anchor" href="#fitting-the-mmrm-in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1.2</span> Fitting the MMRM in R<a class="anchor" aria-label="anchor" href="#fitting-the-mmrm-in-r"><i class="fas fa-link"></i></a>
 </h3>
-<div id="using-the-nlmegls-function" class="section level4" number="9.1.2.1">
+<div id="using-the-nlmegls-function" class="section level4" number="6.1.2.1">
 <h4>
-<span class="header-section-number">9.1.2.1</span> Using the <code>nlme::gls</code> function<a class="anchor" aria-label="anchor" href="#using-the-nlmegls-function"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1.2.1</span> Using the <code>nlme::gls</code> function<a class="anchor" aria-label="anchor" href="#using-the-nlmegls-function"><i class="fas fa-link"></i></a>
 </h4>
 <p>The code below implements an MMRM fit in R with the <code><a href="https://rdrr.io/pkg/nlme/man/gls.html">nlme::gls</a></code> function.</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
@@ -108,9 +111,9 @@
     na.action <span class="op">=</span> <span class="st">"na.omit"</span><span class="op">)</span></code></pre></div>
 <p>here we can swap out <code>corSymm</code> for <code>corCompSymm</code> to give the compound symmetry structure or <code>corCAR1</code> for autoregressive of first order (AR(1)).</p>
 </div>
-<div id="using-the-lme4lmer-function" class="section level4" number="9.1.2.2">
+<div id="using-the-lme4lmer-function" class="section level4" number="6.1.2.2">
 <h4>
-<span class="header-section-number">9.1.2.2</span> Using the <code>lme4::lmer</code> function<a class="anchor" aria-label="anchor" href="#using-the-lme4lmer-function"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1.2.2</span> Using the <code>lme4::lmer</code> function<a class="anchor" aria-label="anchor" href="#using-the-lme4lmer-function"><i class="fas fa-link"></i></a>
 </h4>
 <p>An alternative way to fit an MMRM with unstructured covariance matrices is to use the <code><a href="https://rdrr.io/pkg/lme4/man/lmer.html">lme4::lmer</a></code> function as described by Daniel Sabanes Bove in his R in Pharma talk from 2020 see <a href="https://github.com/rinpharma/2020_presentations/blob/main/talks_folder/2020-Sabanes_Bove-Implementing_MMRM_in_R.pdf">here</a>. The relevance of this fit is apparent when we consider the availability of the Kenward-Roger’s degrees of freedom for the MMRM in R, which at the time of writing, were not yet available for the <code><a href="https://rdrr.io/pkg/nlme/man/gls.html">nlme::gls</a></code> function via the <code>pbkrtest</code> package (see <a href="https://people.math.aau.dk/~sorenh/software/pbkrtest/#NEWS">here</a>).</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
@@ -119,9 +122,9 @@
      control <span class="op">=</span> <span class="fu">lmerControl</span><span class="op">(</span>check.nobs.vs.nRE <span class="op">=</span> <span class="st">"ignore"</span><span class="op">)</span>,
      na.action <span class="op">=</span> <span class="va">na.omit</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="extracting-effect-estimates-using-emmeans" class="section level4" number="9.1.2.3">
+<div id="extracting-effect-estimates-using-emmeans" class="section level4" number="6.1.2.3">
 <h4>
-<span class="header-section-number">9.1.2.3</span> Extracting effect estimates using <code>emmeans</code><a class="anchor" aria-label="anchor" href="#extracting-effect-estimates-using-emmeans"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1.2.3</span> Extracting effect estimates using <code>emmeans</code><a class="anchor" aria-label="anchor" href="#extracting-effect-estimates-using-emmeans"><i class="fas fa-link"></i></a>
 </h4>
 <p>In order to extract relevant marginal means (LSmeans) and contrasts we can use the <code>emmeans</code> package. Below we start by constructing a <code>ref_grid</code> used to make explicit just how the predictions are generated across the levels of <code>TRTP</code> and <code>AVISITN</code>. The <code>emmeans</code> function permits various marginal means to be extracted depending on the <code>formula</code> provided and the following <code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code> function call derives relevant contrasts. Note that more control can be obtained by calling the <code>contrast()</code> function.</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
@@ -130,29 +133,29 @@
 <span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">mod_emm</span><span class="op">)</span> </code></pre></div>
 </div>
 </div>
-<div id="comparison-between-sas-and-r" class="section level3" number="9.1.3">
+<div id="comparison-between-sas-and-r" class="section level3" number="6.1.3">
 <h3>
-<span class="header-section-number">9.1.3</span> Comparison between SAS and R<a class="anchor" aria-label="anchor" href="#comparison-between-sas-and-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1.3</span> Comparison between SAS and R<a class="anchor" aria-label="anchor" href="#comparison-between-sas-and-r"><i class="fas fa-link"></i></a>
 </h3>
 <p>With results available for SAS and R model fits, we turn our attention to generating some visual comparisons of the results. Note that here we adopt a Bland-Altman type plot which plots the difference on the y-axis and the average on the x-axis. This offers a way to inspect any bias or relationships with the size of effect and the associated bias.</p>
 <p>For the extracted LS-means</p>
-<p><img src="mixed-models_files/figure-html/unnamed-chunk-5-1.png" width="100%"><img src="mixed-models_files/figure-html/unnamed-chunk-5-2.png" width="100%"><img src="mixed-models_files/figure-html/unnamed-chunk-5-3.png" width="100%"><img src="mixed-models_files/figure-html/unnamed-chunk-5-4.png" width="100%"></p>
+<p><img src="ch_mixed-models_files/figure-html/unnamed-chunk-5-1.png" width="100%"><img src="ch_mixed-models_files/figure-html/unnamed-chunk-5-2.png" width="100%"><img src="ch_mixed-models_files/figure-html/unnamed-chunk-5-3.png" width="100%"><img src="ch_mixed-models_files/figure-html/unnamed-chunk-5-4.png" width="100%"></p>
 <p>and corresponding SEs</p>
-<p><img src="mixed-models_files/figure-html/unnamed-chunk-6-1.png" width="672"><img src="mixed-models_files/figure-html/unnamed-chunk-6-2.png" width="672"><img src="mixed-models_files/figure-html/unnamed-chunk-6-3.png" width="672"><img src="mixed-models_files/figure-html/unnamed-chunk-6-4.png" width="672"></p>
+<p><img src="ch_mixed-models_files/figure-html/unnamed-chunk-6-1.png" width="672"><img src="ch_mixed-models_files/figure-html/unnamed-chunk-6-2.png" width="672"><img src="ch_mixed-models_files/figure-html/unnamed-chunk-6-3.png" width="672"><img src="ch_mixed-models_files/figure-html/unnamed-chunk-6-4.png" width="672"></p>
 <p>For the derived contrasts</p>
-<p><img src="mixed-models_files/figure-html/unnamed-chunk-7-1.png" width="672"><img src="mixed-models_files/figure-html/unnamed-chunk-7-2.png" width="672"><img src="mixed-models_files/figure-html/unnamed-chunk-7-3.png" width="672"><img src="mixed-models_files/figure-html/unnamed-chunk-7-4.png" width="672"></p>
+<p><img src="ch_mixed-models_files/figure-html/unnamed-chunk-7-1.png" width="672"><img src="ch_mixed-models_files/figure-html/unnamed-chunk-7-2.png" width="672"><img src="ch_mixed-models_files/figure-html/unnamed-chunk-7-3.png" width="672"><img src="ch_mixed-models_files/figure-html/unnamed-chunk-7-4.png" width="672"></p>
 <p>and corresponding 95%CI widths</p>
-<p><img src="mixed-models_files/figure-html/unnamed-chunk-8-1.png" width="672"><img src="mixed-models_files/figure-html/unnamed-chunk-8-2.png" width="672"><img src="mixed-models_files/figure-html/unnamed-chunk-8-3.png" width="672"><img src="mixed-models_files/figure-html/unnamed-chunk-8-4.png" width="672"></p>
+<p><img src="ch_mixed-models_files/figure-html/unnamed-chunk-8-1.png" width="672"><img src="ch_mixed-models_files/figure-html/unnamed-chunk-8-2.png" width="672"><img src="ch_mixed-models_files/figure-html/unnamed-chunk-8-3.png" width="672"><img src="ch_mixed-models_files/figure-html/unnamed-chunk-8-4.png" width="672"></p>
 </div>
-<div id="analysis-of-sas-and-r-comparison" class="section level3" number="9.1.4">
+<div id="analysis-of-sas-and-r-comparison" class="section level3" number="6.1.4">
 <h3>
-<span class="header-section-number">9.1.4</span> Analysis of SAS and R Comparison<a class="anchor" aria-label="anchor" href="#analysis-of-sas-and-r-comparison"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1.4</span> Analysis of SAS and R Comparison<a class="anchor" aria-label="anchor" href="#analysis-of-sas-and-r-comparison"><i class="fas fa-link"></i></a>
 </h3>
 <p>Using SAS PROC MIXED and R functions such as gls, lmer, mod_grid, and mod_emm, results were broadly aligned. Results not being exact can be attributed to many factors such as rounding precision, data handling, and many other internal processing nuances. However, Bland-Altman type plots showed small but randomly distributed differences across a broad range of parameters from the input data. Apart from a small subset of the parameters, there were no trends observed which would have suggested systemic differences between the languages. These analyses were based on a single set of data so more research must be done. However, based on comparing R documentation with SAS documentation, as well as the results displayed above in this paper, it is evident that the R and the SAS methods cover do produce similarly valid results for the options which were tested.</p>
 </div>
-<div id="future-work" class="section level3" number="9.1.5">
+<div id="future-work" class="section level3" number="6.1.5">
 <h3>
-<span class="header-section-number">9.1.5</span> Future work<a class="anchor" aria-label="anchor" href="#future-work"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1.5</span> Future work<a class="anchor" aria-label="anchor" href="#future-work"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Run SAS code by also removing assessments at <code>avisitn=0</code> from the response variable, and using <code>trtp</code> (or <code>trtpn</code>) and <code>avisit</code> (or <code>avisitn</code>)</li>
@@ -164,27 +167,27 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="linear-models.html"><span class="header-section-number">8</span> Linear Models</a></div>
-<div class="next"><a href="survival-models.html"><span class="header-section-number">10</span> Survival Models</a></div>
+<div class="prev"><a href="linear-models.html"><span class="header-section-number">5</span> Linear Models</a></div>
+<div class="next"><a href="survival-models.html"><span class="header-section-number">7</span> Survival Models</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#mixed-models"><span class="header-section-number">9</span> Mixed Models</a></li>
+<li><a class="nav-link" href="#mixed-models"><span class="header-section-number">6</span> Mixed Models</a></li>
 <li>
-<a class="nav-link" href="#repeated-measures"><span class="header-section-number">9.1</span> Repeated Measures</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#introduction-1"><span class="header-section-number">9.1.1</span> Introduction</a></li>
-<li><a class="nav-link" href="#fitting-the-mmrm-in-r"><span class="header-section-number">9.1.2</span> Fitting the MMRM in R</a></li>
-<li><a class="nav-link" href="#comparison-between-sas-and-r"><span class="header-section-number">9.1.3</span> Comparison between SAS and R</a></li>
-<li><a class="nav-link" href="#analysis-of-sas-and-r-comparison"><span class="header-section-number">9.1.4</span> Analysis of SAS and R Comparison</a></li>
-<li><a class="nav-link" href="#future-work"><span class="header-section-number">9.1.5</span> Future work</a></li>
+<a class="nav-link" href="#repeated-measures"><span class="header-section-number">6.1</span> Repeated Measures</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introduction-1"><span class="header-section-number">6.1.1</span> Introduction</a></li>
+<li><a class="nav-link" href="#fitting-the-mmrm-in-r"><span class="header-section-number">6.1.2</span> Fitting the MMRM in R</a></li>
+<li><a class="nav-link" href="#comparison-between-sas-and-r"><span class="header-section-number">6.1.3</span> Comparison between SAS and R</a></li>
+<li><a class="nav-link" href="#analysis-of-sas-and-r-comparison"><span class="header-section-number">6.1.4</span> Analysis of SAS and R Comparison</a></li>
+<li><a class="nav-link" href="#future-work"><span class="header-section-number">6.1.5</span> Future work</a></li>
 </ul>
 </li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/phuse-org/CSRMLW_bookdown/blob/main/mixed-models.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/phuse-org/CSRMLW_bookdown/edit/main/mixed-models.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/phuse-org/CSRMLW_bookdown/blob/main/ch_mixed-models.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/phuse-org/CSRMLW_bookdown/edit/main/ch_mixed-models.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

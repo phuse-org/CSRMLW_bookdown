@@ -3,7 +3,8 @@ library(gt)
 library(janitor)
 
 
-interim_raw <- read_csv(here::here('cmh/Docu/interim_update','cmhsummary.csv')) %>%
+interim_raw <-
+  read_csv('data/cmh/cmhsummary.csv') %>%
   janitor::clean_names()
 
 
@@ -288,9 +289,9 @@ t2
 t3
 
 # save using here - more consistent
-saveRDS(t1a, here::here('cmh/Docu/interim_update','table1a.RDS'))
-saveRDS(t1b, here::here('cmh/Docu/interim_update','table1b.RDS'))
-saveRDS(t2, here::here('cmh/Docu/interim_update','table2.RDS'))
-saveRDS(t3, here::here('cmh/Docu/interim_update','table3.RDS'))
+saveRDS(t1a, 'data/cmh/table1a.rds')
+saveRDS(t1b, 'data/cmh/table1b.rds')
+saveRDS(t2,  'data/cmh/table2.rds')
+saveRDS(t3,  'data/cmh/table3.rds')
 
 

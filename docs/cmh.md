@@ -1,4 +1,4 @@
-# Cochran-Mantel-Haenszel Test
+# Cochran Mantel Haenszel Test
 
 
 

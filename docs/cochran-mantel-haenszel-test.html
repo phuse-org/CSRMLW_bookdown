@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>11 Cochran-Mantel-Haenszel Test | Clinical Statistical Reporting in a Multilingual World</title>
+<title>8 Cochran Mantel Haenszel Test | Clinical Statistical Reporting in a Multilingual World</title>
 <meta name="author" content="PHUSE Whitepaper Team">
-<meta name="description" content="The CMH procedure tests for conditional independence in partial contingency tables for a 2 x 2 x K design. However, it can be generalized to tables of X x Y x K dimensions.  11.1 Naming Convention...">
+<meta name="description" content="The CMH procedure tests for conditional independence in partial contingency tables for a 2 x 2 x K design. However, it can be generalized to tables of X x Y x K dimensions.  8.1 Naming Convention...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="11 Cochran-Mantel-Haenszel Test | Clinical Statistical Reporting in a Multilingual World">
+<meta property="og:title" content="8 Cochran Mantel Haenszel Test | Clinical Statistical Reporting in a Multilingual World">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/phuse-org/cochran-mantel-haenszel-test.html">
-<meta property="og:description" content="The CMH procedure tests for conditional independence in partial contingency tables for a 2 x 2 x K design. However, it can be generalized to tables of X x Y x K dimensions.  11.1 Naming Convention...">
+<meta property="og:description" content="The CMH procedure tests for conditional independence in partial contingency tables for a 2 x 2 x K design. However, it can be generalized to tables of X x Y x K dimensions.  8.1 Naming Convention...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="11 Cochran-Mantel-Haenszel Test | Clinical Statistical Reporting in a Multilingual World">
-<meta name="twitter:description" content="The CMH procedure tests for conditional independence in partial contingency tables for a 2 x 2 x K design. However, it can be generalized to tables of X x Y x K dimensions.  11.1 Naming Convention...">
+<meta name="twitter:title" content="8 Cochran Mantel Haenszel Test | Clinical Statistical Reporting in a Multilingual World">
+<meta name="twitter:description" content="The CMH procedure tests for conditional independence in partial contingency tables for a 2 x 2 x K design. However, it can be generalized to tables of X x Y x K dimensions.  8.1 Naming Convention...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -42,16 +42,19 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
 <li><a class="" href="introduction.html"><span class="header-section-number">1</span> Introduction</a></li>
-<li><a class="" href="how-to-contribute-to-this-project.html"><span class="header-section-number">2</span> How to Contribute to this Project</a></li>
-<li><a class="" href="additional-resources.html"><span class="header-section-number">3</span> Additional Resources</a></li>
-<li><a class="" href="use-cases.html"><span class="header-section-number">4</span> Use Cases</a></li>
-<li><a class="" href="framework.html"><span class="header-section-number">5</span> Framework</a></li>
-<li><a class="" href="in-depth.html"><span class="header-section-number">6</span> In Depth</a></li>
-<li><a class="" href="summary-statistics.html"><span class="header-section-number">7</span> Summary Statistics</a></li>
-<li><a class="" href="linear-models.html"><span class="header-section-number">8</span> Linear Models</a></li>
-<li><a class="" href="mixed-models.html"><span class="header-section-number">9</span> Mixed Models</a></li>
-<li><a class="" href="survival-models.html"><span class="header-section-number">10</span> Survival Models</a></li>
-<li><a class="active" href="cochran-mantel-haenszel-test.html"><span class="header-section-number">11</span> Cochran-Mantel-Haenszel Test</a></li>
+<li><a class="" href="framework.html"><span class="header-section-number">2</span> Framework</a></li>
+<li class="book-part">Use Cases</li>
+<li><a class="" href="usecase-intro.html">Introduction</a></li>
+<li><a class="" href="general-notes.html"><span class="header-section-number">3</span> General Notes</a></li>
+<li><a class="" href="summary-statistics.html"><span class="header-section-number">4</span> Summary Statistics</a></li>
+<li><a class="" href="linear-models.html"><span class="header-section-number">5</span> Linear Models</a></li>
+<li><a class="" href="mixed-models.html"><span class="header-section-number">6</span> Mixed Models</a></li>
+<li><a class="" href="survival-models.html"><span class="header-section-number">7</span> Survival Models</a></li>
+<li><a class="active" href="cochran-mantel-haenszel-test.html"><span class="header-section-number">8</span> Cochran Mantel Haenszel Test</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="how-to-contribute-to-this-project.html"><span class="header-section-number">9</span> How to Contribute to this Project</a></li>
+<li><a class="" href="additional-resources.html"><span class="header-section-number">10</span> Additional Resources</a></li>
+<li><a class="" href="references-1.html"><span class="header-section-number">11</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -59,15 +62,15 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="cochran-mantel-haenszel-test" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="cochran-mantel-haenszel-test" class="section level1" number="8">
 <h1>
-<span class="header-section-number">11</span> Cochran-Mantel-Haenszel Test<a class="anchor" aria-label="anchor" href="#cochran-mantel-haenszel-test"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8</span> Cochran Mantel Haenszel Test<a class="anchor" aria-label="anchor" href="#cochran-mantel-haenszel-test"><i class="fas fa-link"></i></a>
 </h1>
 <p>The CMH procedure tests for conditional independence in partial contingency tables for a 2 x 2 x K design. However, it can be generalized to tables of X x Y x K dimensions.</p>
 <div class="inline-figure"><img src="images/cmh/img.png" width="162" style="display: block; margin: auto;"></div>
-<div id="naming-convention" class="section level2" number="11.1">
+<div id="naming-convention" class="section level2" number="8.1">
 <h2>
-<span class="header-section-number">11.1</span> Naming Convention<a class="anchor" aria-label="anchor" href="#naming-convention"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.1</span> Naming Convention<a class="anchor" aria-label="anchor" href="#naming-convention"><i class="fas fa-link"></i></a>
 </h2>
 <p>For the remainder of this document, we adopt the following naming convention when referring to variables of a contingency table:</p>
 <ul>
@@ -76,9 +79,9 @@
 <li>K = control</li>
 </ul>
 </div>
-<div id="scale" class="section level2" number="11.2">
+<div id="scale" class="section level2" number="8.2">
 <h2>
-<span class="header-section-number">11.2</span> Scale<a class="anchor" aria-label="anchor" href="#scale"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.2</span> Scale<a class="anchor" aria-label="anchor" href="#scale"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <code>scale</code> of the exposure (X) and response (Y) variables dictate which test statistic is computed for the contingency table. Each test statistic is evaluated on different degrees of freedom (df):</p>
 <ul>
@@ -93,13 +96,13 @@
 </li>
 </ul>
 </div>
-<div id="testing-strategy" class="section level2" number="11.3">
+<div id="testing-strategy" class="section level2" number="8.3">
 <h2>
-<span class="header-section-number">11.3</span> Testing Strategy<a class="anchor" aria-label="anchor" href="#testing-strategy"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3</span> Testing Strategy<a class="anchor" aria-label="anchor" href="#testing-strategy"><i class="fas fa-link"></i></a>
 </h2>
-<div id="data" class="section level3" number="11.3.1">
+<div id="data" class="section level3" number="8.3.1">
 <h3>
-<span class="header-section-number">11.3.1</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3.1</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
 </h3>
 <p>To begin investigating the differences in the SAS and R implementations of the CMH test, we decided to use the CDISC Pilot data set, which is publicly available on the PHUSE Test Data Factory repository. We applied very basic filtering conditions upfront (see below) and this data set served as the basis of the examples to follow.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
@@ -109,9 +112,9 @@
 <span class="fu"><a href="https://haven.tidyverse.org/reference/read_xpt.html">read_xpt</a></span><span class="op">(</span><span class="st">"https://github.com/phuse-org/TestDataFactory/raw/main/Updated/TDF_ADaM/adcibc.xpt"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">EFFFL</span> <span class="op">==</span> <span class="st">'Y'</span> <span class="op">&amp;</span> <span class="va">ITTFL</span> <span class="op">==</span> <span class="st">'Y'</span>, <span class="va">AVISITN</span> <span class="op">==</span> <span class="fl">8</span> <span class="op">&amp;</span> <span class="va">ANL01FL</span><span class="op">==</span><span class="st">'Y'</span><span class="op">)</span> </code></pre></div>
 </div>
-<div id="schemes" class="section level3" number="11.3.2">
+<div id="schemes" class="section level3" number="8.3.2">
 <h3>
-<span class="header-section-number">11.3.2</span> Schemes<a class="anchor" aria-label="anchor" href="#schemes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3.2</span> Schemes<a class="anchor" aria-label="anchor" href="#schemes"><i class="fas fa-link"></i></a>
 </h3>
 <p>In order to follow a systematic approach to testing, and to cover variations in the CMH test, we considered the traditional 2 x 2 x K design as well as scenarios where the generalized CMH test is employed (e.g. 5 x 3 x 3).</p>
 <p>We present 5 archetype test scenarios that illustrate diverging results, possibly related to sparse data and possibly considered edge cases.</p>
@@ -170,13 +173,13 @@
 </table></div>
 </div>
 </div>
-<div id="implementation" class="section level2" number="11.4">
+<div id="implementation" class="section level2" number="8.4">
 <h2>
-<span class="header-section-number">11.4</span> Implementation<a class="anchor" aria-label="anchor" href="#implementation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4</span> Implementation<a class="anchor" aria-label="anchor" href="#implementation"><i class="fas fa-link"></i></a>
 </h2>
-<div id="cmh-in-sas" class="section level3" number="11.4.1">
+<div id="cmh-in-sas" class="section level3" number="8.4.1">
 <h3>
-<span class="header-section-number">11.4.1</span> CMH in SAS<a class="anchor" aria-label="anchor" href="#cmh-in-sas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4.1</span> CMH in SAS<a class="anchor" aria-label="anchor" href="#cmh-in-sas"><i class="fas fa-link"></i></a>
 </h3>
 <p>The cmh test is calculated in SAS using the PROC FREQ procedure. By default, it outputs the chi square statistic, degrees of freedom and p-value for each of the three alternative hypothesis: <code>general association</code>, <code>row means differ</code>, and <code>nonzero correlation</code>. It is up to the statistical analyst or statistician to know which result is appropriate for their analysis.</p>
 <p>When the design of the contingency table is 2 x 2 x K (i.e, X == 2 levels, Y == 2 levels, K &gt;= 2 levels), the Mantel-Haenszel Common Odds Ratio (odds ratio estimate, 95% CI, P-value) and the Breslow-Day Test for Homogeneity of the Odds Ratios (chi-square statistic, degrees of freedom, P-value) are also output.</p>
@@ -186,40 +189,40 @@
 <span id="cb40-3"><a href="cochran-mantel-haenszel-test.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> the order of K, X, and Y appearing on the line is important<span class="sc">!</span>;</span>
 <span id="cb40-4"><a href="cochran-mantel-haenszel-test.html#cb40-4" aria-hidden="true" tabindex="-1"></a>run; </span></code></pre></div>
 </div>
-<div id="in-r" class="section level3" number="11.4.2">
+<div id="in-r" class="section level3" number="8.4.2">
 <h3>
-<span class="header-section-number">11.4.2</span> In R<a class="anchor" aria-label="anchor" href="#in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4.2</span> In R<a class="anchor" aria-label="anchor" href="#in-r"><i class="fas fa-link"></i></a>
 </h3>
 <p>We did not find any R package that delivers all the same measures as SAS at once. Therefore, we tried out multiple packages:</p>
-<div id="htmlwidget-b90dca7d8c6c59c1ad18" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-b90dca7d8c6c59c1ad18">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Package":["stats::mantelhaen.test()","vcdExtra::CMHtest()","epiDisplay::mhor()"],"General Association":["✅","✅","❌"],"Row Means Differ":["❌","✅","❌"],"Nonzero Correlation":["❌","✅","❌"],"M-H Odds Ratio":["✅","❌","✅"],"Homogeneity Test":["❌","❌","✅"],"Note":["Works well for 2x2xK","Problems with sparsity, potential bug","OR are limited to 2x2xK design"]},"columns":[{"accessor":"Package","name":"Package","type":"character","html":true,"align":"center","width":170},{"accessor":"General Association","name":"General Association","type":"character","html":true,"align":"center"},{"accessor":"Row Means Differ","name":"Row Means Differ","type":"character","html":true,"align":"center"},{"accessor":"Nonzero Correlation","name":"Nonzero Correlation","type":"character","html":true,"align":"center"},{"accessor":"M-H Odds Ratio","name":"M-H Odds Ratio","type":"character","html":true,"align":"center"},{"accessor":"Homogeneity Test","name":"Homogeneity Test","type":"character","html":true,"align":"center"},{"accessor":"Note","name":"Note","type":"character","html":true,"align":"center","width":120}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"64216caa36a6dd9c60e1a8145c8c02d2"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script><div id="mantelhaen.test" class="section level4" number="11.4.2.1">
+<div id="htmlwidget-e7a64df40949f1a29561" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e7a64df40949f1a29561">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Package":["stats::mantelhaen.test()","vcdExtra::CMHtest()","epiDisplay::mhor()"],"General Association":["✅","✅","❌"],"Row Means Differ":["❌","✅","❌"],"Nonzero Correlation":["❌","✅","❌"],"M-H Odds Ratio":["✅","❌","✅"],"Homogeneity Test":["❌","❌","✅"],"Note":["Works well for 2x2xK","Problems with sparsity, potential bug","OR are limited to 2x2xK design"]},"columns":[{"accessor":"Package","name":"Package","type":"character","html":true,"align":"center","width":170},{"accessor":"General Association","name":"General Association","type":"character","html":true,"align":"center"},{"accessor":"Row Means Differ","name":"Row Means Differ","type":"character","html":true,"align":"center"},{"accessor":"Nonzero Correlation","name":"Nonzero Correlation","type":"character","html":true,"align":"center"},{"accessor":"M-H Odds Ratio","name":"M-H Odds Ratio","type":"character","html":true,"align":"center"},{"accessor":"Homogeneity Test","name":"Homogeneity Test","type":"character","html":true,"align":"center"},{"accessor":"Note","name":"Note","type":"character","html":true,"align":"center","width":120}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"64216caa36a6dd9c60e1a8145c8c02d2"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script><div id="mantelhaen.test" class="section level4" number="8.4.2.1">
 <h4>
-<span class="header-section-number">11.4.2.1</span> mantelhaen.test()<a class="anchor" aria-label="anchor" href="#mantelhaen.test"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4.2.1</span> mantelhaen.test()<a class="anchor" aria-label="anchor" href="#mantelhaen.test"><i class="fas fa-link"></i></a>
 </h4>
 <p>This is included in a base installation of R, as part of the stats package. Requires inputting data as a <em>table</em> or as <em>vectors</em>.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/mantelhaen.test.html">mantelhaen.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">x</span>, y <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">y</span>, z <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">k</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="cmhtest" class="section level4" number="11.4.2.2">
+<div id="cmhtest" class="section level4" number="8.4.2.2">
 <h4>
-<span class="header-section-number">11.4.2.2</span> CMHtest()<a class="anchor" aria-label="anchor" href="#cmhtest"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4.2.2</span> CMHtest()<a class="anchor" aria-label="anchor" href="#cmhtest"><i class="fas fa-link"></i></a>
 </h4>
 <p>The vcdExtra package provides results for the generalized CMH test, for each of the three model it outputs the Chi-square value and the respective p-values. Flexible data input methods available: <em>table</em> or <em>formula</em> (aggregated level data in a data frame).</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://CRAN.R-project.org/package=vcdExtra">vcdExtra</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/vcdExtra/man/CMHtest.html">CMHtest</a></span><span class="op">(</span><span class="va">Freq</span> <span class="op">~</span> <span class="va">X</span> <span class="op">+</span> <span class="va">Y</span> <span class="op">|</span> <span class="va">K</span> , data<span class="op">=</span><span class="va">data</span>, overall<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> </code></pre></div>
-<div id="forked-version---solution-for-sparse-data" class="section level5" number="11.4.2.2.1">
+<div id="forked-version---solution-for-sparse-data" class="section level5" number="8.4.2.2.1">
 <h5>
-<span class="header-section-number">11.4.2.2.1</span> Forked Version - Solution for sparse data<a class="anchor" aria-label="anchor" href="#forked-version---solution-for-sparse-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4.2.2.1</span> Forked Version - Solution for sparse data<a class="anchor" aria-label="anchor" href="#forked-version---solution-for-sparse-data"><i class="fas fa-link"></i></a>
 </h5>
 <p>To tackle the <a href="https://github.com/friendly/vcdExtra/issues/3">issue with sparse data</a> it is recommended that a use of <code><a href="https://rdrr.io/r/base/solve.html">solve()</a></code> is replaced with <code><a href="https://rdrr.io/pkg/MASS/man/ginv.html">MASS::ginv</a></code>. This was implemented in the forked version of vcdExtra which can be installed from here:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"mstackhouse/vcdExtra"</span><span class="op">)</span></code></pre></div>
 <p>However, also the forked version for the vcdExtra package works only until a certain level of sparsity. In case of our data, it still works if the data are stratified by the pooled Site ID (SITEGR1 - 11 unique values) whereas using the unpooled Site ID (SITEID - 17 unique values) also throws an error.</p>
 </div>
-<div id="inconsistent-results" class="section level5" number="11.4.2.2.2">
+<div id="inconsistent-results" class="section level5" number="8.4.2.2.2">
 <h5>
-<span class="header-section-number">11.4.2.2.2</span> Inconsistent Results<a class="anchor" aria-label="anchor" href="#inconsistent-results"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4.2.2.2</span> Inconsistent Results<a class="anchor" aria-label="anchor" href="#inconsistent-results"><i class="fas fa-link"></i></a>
 </h5>
 <p>Exploring the vcdExtra package in detail we realized that there seems to be a bug in the implementation which we would like to highlight here.</p>
 <p>Using an independent data example (3x2x2), we first ran the CMH test through SAS and obtained the following:</p>
@@ -268,9 +271,9 @@
 <p>We are planning to submit an issue to the vcdExtra github for the author’s review.</p>
 </div>
 </div>
-<div id="epi-display-package" class="section level4" number="11.4.2.3">
+<div id="epi-display-package" class="section level4" number="8.4.2.3">
 <h4>
-<span class="header-section-number">11.4.2.3</span> Epi Display package<a class="anchor" aria-label="anchor" href="#epi-display-package"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4.2.3</span> Epi Display package<a class="anchor" aria-label="anchor" href="#epi-display-package"><i class="fas fa-link"></i></a>
 </h4>
 <p>To get the M-H common odds ratio and the homogeneity test, the epiDisplay package can be used.</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
@@ -279,21 +282,21 @@
 </div>
 </div>
 </div>
-<div id="results" class="section level2" number="11.5">
+<div id="results" class="section level2" number="8.5">
 <h2>
-<span class="header-section-number">11.5</span> Results<a class="anchor" aria-label="anchor" href="#results"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5</span> Results<a class="anchor" aria-label="anchor" href="#results"><i class="fas fa-link"></i></a>
 </h2>
 <p>Here the results can be seen:</p>
-<div id="cmh-statistics" class="section level3" number="11.5.1">
+<div id="cmh-statistics" class="section level3" number="8.5.1">
 <h3>
-<span class="header-section-number">11.5.1</span> CMH Statistics<a class="anchor" aria-label="anchor" href="#cmh-statistics"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.1</span> CMH Statistics<a class="anchor" aria-label="anchor" href="#cmh-statistics"><i class="fas fa-link"></i></a>
 </h3>
-<div id="bpaeejokfq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="rvsslaivbt" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#bpaeejokfq .gt_table {
+#rvsslaivbt .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -318,7 +321,7 @@
   border-left-color: #D3D3D3;
 }
 
-#bpaeejokfq .gt_heading {
+#rvsslaivbt .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -330,33 +333,37 @@
   border-right-color: #D3D3D3;
 }
 
-#bpaeejokfq .gt_title {
+#rvsslaivbt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
 
-#bpaeejokfq .gt_subtitle {
+#rvsslaivbt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
   padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#bpaeejokfq .gt_bottom_border {
+#rvsslaivbt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bpaeejokfq .gt_col_headings {
+#rvsslaivbt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -371,7 +378,7 @@
   border-right-color: #D3D3D3;
 }
 
-#bpaeejokfq .gt_col_heading {
+#rvsslaivbt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -391,7 +398,7 @@
   overflow-x: hidden;
 }
 
-#bpaeejokfq .gt_column_spanner_outer {
+#rvsslaivbt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -403,15 +410,15 @@
   padding-right: 4px;
 }
 
-#bpaeejokfq .gt_column_spanner_outer:first-child {
+#rvsslaivbt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bpaeejokfq .gt_column_spanner_outer:last-child {
+#rvsslaivbt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bpaeejokfq .gt_column_spanner {
+#rvsslaivbt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -423,8 +430,11 @@
   width: 100%;
 }
 
-#bpaeejokfq .gt_group_heading {
-  padding: 8px;
+#rvsslaivbt .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -445,7 +455,7 @@
   vertical-align: middle;
 }
 
-#bpaeejokfq .gt_empty_group_heading {
+#rvsslaivbt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -460,15 +470,15 @@
   vertical-align: middle;
 }
 
-#bpaeejokfq .gt_from_md > :first-child {
+#rvsslaivbt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bpaeejokfq .gt_from_md > :last-child {
+#rvsslaivbt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bpaeejokfq .gt_row {
+#rvsslaivbt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -487,7 +497,7 @@
   overflow-x: hidden;
 }
 
-#bpaeejokfq .gt_stub {
+#rvsslaivbt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -496,10 +506,29 @@
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#bpaeejokfq .gt_summary_row {
+#rvsslaivbt .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rvsslaivbt .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rvsslaivbt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -509,17 +538,26 @@
   padding-right: 5px;
 }
 
-#bpaeejokfq .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
+#rvsslaivbt .gt_first_summary_row {
   border-top-style: solid;
-  border-top-width: 2px;
   border-top-color: #D3D3D3;
 }
 
-#bpaeejokfq .gt_grand_summary_row {
+#rvsslaivbt .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rvsslaivbt .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rvsslaivbt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -529,7 +567,7 @@
   padding-right: 5px;
 }
 
-#bpaeejokfq .gt_first_grand_summary_row {
+#rvsslaivbt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -539,11 +577,11 @@
   border-top-color: #D3D3D3;
 }
 
-#bpaeejokfq .gt_striped {
+#rvsslaivbt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bpaeejokfq .gt_table_body {
+#rvsslaivbt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -552,7 +590,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#bpaeejokfq .gt_footnotes {
+#rvsslaivbt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -566,13 +604,16 @@
   border-right-color: #D3D3D3;
 }
 
-#bpaeejokfq .gt_footnote {
+#rvsslaivbt .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#bpaeejokfq .gt_sourcenotes {
+#rvsslaivbt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -586,44 +627,71 @@
   border-right-color: #D3D3D3;
 }
 
-#bpaeejokfq .gt_sourcenote {
+#rvsslaivbt .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#bpaeejokfq .gt_left {
+#rvsslaivbt .gt_left {
   text-align: left;
 }
 
-#bpaeejokfq .gt_center {
+#rvsslaivbt .gt_center {
   text-align: center;
 }
 
-#bpaeejokfq .gt_right {
+#rvsslaivbt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bpaeejokfq .gt_font_normal {
+#rvsslaivbt .gt_font_normal {
   font-weight: normal;
 }
 
-#bpaeejokfq .gt_font_bold {
+#rvsslaivbt .gt_font_bold {
   font-weight: bold;
 }
 
-#bpaeejokfq .gt_font_italic {
+#rvsslaivbt .gt_font_italic {
   font-style: italic;
 }
 
-#bpaeejokfq .gt_super {
+#rvsslaivbt .gt_super {
   font-size: 65%;
 }
 
-#bpaeejokfq .gt_footnote_marks {
+#rvsslaivbt .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#rvsslaivbt .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rvsslaivbt .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#rvsslaivbt .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#rvsslaivbt .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table" style="table-layout: fixed;; width: 0px">
@@ -758,12 +826,12 @@
 </table></div>
 </div>
 <p>As it can be seen, there are two schemata where R does not provide any results:</p>
-<div id="wwicaxgnxp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="cxyekpknwk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#wwicaxgnxp .gt_table {
+#cxyekpknwk .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -788,7 +856,7 @@
   border-left-color: #D3D3D3;
 }
 
-#wwicaxgnxp .gt_heading {
+#cxyekpknwk .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -800,33 +868,37 @@
   border-right-color: #D3D3D3;
 }
 
-#wwicaxgnxp .gt_title {
+#cxyekpknwk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
 
-#wwicaxgnxp .gt_subtitle {
+#cxyekpknwk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
   padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#wwicaxgnxp .gt_bottom_border {
+#cxyekpknwk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wwicaxgnxp .gt_col_headings {
+#cxyekpknwk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -841,7 +913,7 @@
   border-right-color: #D3D3D3;
 }
 
-#wwicaxgnxp .gt_col_heading {
+#cxyekpknwk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -861,7 +933,7 @@
   overflow-x: hidden;
 }
 
-#wwicaxgnxp .gt_column_spanner_outer {
+#cxyekpknwk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -873,15 +945,15 @@
   padding-right: 4px;
 }
 
-#wwicaxgnxp .gt_column_spanner_outer:first-child {
+#cxyekpknwk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wwicaxgnxp .gt_column_spanner_outer:last-child {
+#cxyekpknwk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wwicaxgnxp .gt_column_spanner {
+#cxyekpknwk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -893,8 +965,11 @@
   width: 100%;
 }
 
-#wwicaxgnxp .gt_group_heading {
-  padding: 8px;
+#cxyekpknwk .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -915,7 +990,7 @@
   vertical-align: middle;
 }
 
-#wwicaxgnxp .gt_empty_group_heading {
+#cxyekpknwk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -930,15 +1005,15 @@
   vertical-align: middle;
 }
 
-#wwicaxgnxp .gt_from_md > :first-child {
+#cxyekpknwk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wwicaxgnxp .gt_from_md > :last-child {
+#cxyekpknwk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wwicaxgnxp .gt_row {
+#cxyekpknwk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -957,7 +1032,7 @@
   overflow-x: hidden;
 }
 
-#wwicaxgnxp .gt_stub {
+#cxyekpknwk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -966,10 +1041,29 @@
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#wwicaxgnxp .gt_summary_row {
+#cxyekpknwk .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cxyekpknwk .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cxyekpknwk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -979,17 +1073,26 @@
   padding-right: 5px;
 }
 
-#wwicaxgnxp .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
+#cxyekpknwk .gt_first_summary_row {
   border-top-style: solid;
-  border-top-width: 2px;
   border-top-color: #D3D3D3;
 }
 
-#wwicaxgnxp .gt_grand_summary_row {
+#cxyekpknwk .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cxyekpknwk .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cxyekpknwk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -999,7 +1102,7 @@
   padding-right: 5px;
 }
 
-#wwicaxgnxp .gt_first_grand_summary_row {
+#cxyekpknwk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1009,11 +1112,11 @@
   border-top-color: #D3D3D3;
 }
 
-#wwicaxgnxp .gt_striped {
+#cxyekpknwk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wwicaxgnxp .gt_table_body {
+#cxyekpknwk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1022,7 +1125,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#wwicaxgnxp .gt_footnotes {
+#cxyekpknwk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1036,13 +1139,16 @@
   border-right-color: #D3D3D3;
 }
 
-#wwicaxgnxp .gt_footnote {
+#cxyekpknwk .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#wwicaxgnxp .gt_sourcenotes {
+#cxyekpknwk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1056,44 +1162,71 @@
   border-right-color: #D3D3D3;
 }
 
-#wwicaxgnxp .gt_sourcenote {
+#cxyekpknwk .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#wwicaxgnxp .gt_left {
+#cxyekpknwk .gt_left {
   text-align: left;
 }
 
-#wwicaxgnxp .gt_center {
+#cxyekpknwk .gt_center {
   text-align: center;
 }
 
-#wwicaxgnxp .gt_right {
+#cxyekpknwk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wwicaxgnxp .gt_font_normal {
+#cxyekpknwk .gt_font_normal {
   font-weight: normal;
 }
 
-#wwicaxgnxp .gt_font_bold {
+#cxyekpknwk .gt_font_bold {
   font-weight: bold;
 }
 
-#wwicaxgnxp .gt_font_italic {
+#cxyekpknwk .gt_font_italic {
   font-style: italic;
 }
 
-#wwicaxgnxp .gt_super {
+#cxyekpknwk .gt_super {
   font-size: 65%;
 }
 
-#wwicaxgnxp .gt_footnote_marks {
+#cxyekpknwk .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#cxyekpknwk .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cxyekpknwk .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#cxyekpknwk .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#cxyekpknwk .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table" style="table-layout: fixed;; width: 0px">
@@ -1200,17 +1333,17 @@
 <p><strong>Reason for NaN in schema 3</strong>: Stratum k = AMERICAN INDIAN OR ALASKA NATIVE can not be compared because there are only values for one treatment and one gender.<br><strong>Reason for Error 4:</strong><br>
 For large sparse table (many strata) CMHTest will occasionally throw an error in solve.default(AVA) because of singularity</p>
 </div>
-<div id="odds-ratio" class="section level3" number="11.5.2">
+<div id="odds-ratio" class="section level3" number="8.5.2">
 <h3>
-<span class="header-section-number">11.5.2</span> Odds Ratio<a class="anchor" aria-label="anchor" href="#odds-ratio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.2</span> Odds Ratio<a class="anchor" aria-label="anchor" href="#odds-ratio"><i class="fas fa-link"></i></a>
 </h3>
 <p>Only applicable to 2x2xK designs.</p>
-<div id="xytyyxemba" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="byisikgesq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#xytyyxemba .gt_table {
+#byisikgesq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1235,7 +1368,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-left-color: #D3D3D3;
 }
 
-#xytyyxemba .gt_heading {
+#byisikgesq .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1247,33 +1380,37 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-right-color: #D3D3D3;
 }
 
-#xytyyxemba .gt_title {
+#byisikgesq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
 
-#xytyyxemba .gt_subtitle {
+#byisikgesq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
   padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#xytyyxemba .gt_bottom_border {
+#byisikgesq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xytyyxemba .gt_col_headings {
+#byisikgesq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1288,7 +1425,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-right-color: #D3D3D3;
 }
 
-#xytyyxemba .gt_col_heading {
+#byisikgesq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1308,7 +1445,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   overflow-x: hidden;
 }
 
-#xytyyxemba .gt_column_spanner_outer {
+#byisikgesq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1320,15 +1457,15 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   padding-right: 4px;
 }
 
-#xytyyxemba .gt_column_spanner_outer:first-child {
+#byisikgesq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xytyyxemba .gt_column_spanner_outer:last-child {
+#byisikgesq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xytyyxemba .gt_column_spanner {
+#byisikgesq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1340,8 +1477,11 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   width: 100%;
 }
 
-#xytyyxemba .gt_group_heading {
-  padding: 8px;
+#byisikgesq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1362,7 +1502,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   vertical-align: middle;
 }
 
-#xytyyxemba .gt_empty_group_heading {
+#byisikgesq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1377,15 +1517,15 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   vertical-align: middle;
 }
 
-#xytyyxemba .gt_from_md > :first-child {
+#byisikgesq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xytyyxemba .gt_from_md > :last-child {
+#byisikgesq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xytyyxemba .gt_row {
+#byisikgesq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1404,7 +1544,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   overflow-x: hidden;
 }
 
-#xytyyxemba .gt_stub {
+#byisikgesq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1413,10 +1553,29 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#xytyyxemba .gt_summary_row {
+#byisikgesq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#byisikgesq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#byisikgesq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1426,17 +1585,26 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   padding-right: 5px;
 }
 
-#xytyyxemba .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
+#byisikgesq .gt_first_summary_row {
   border-top-style: solid;
-  border-top-width: 2px;
   border-top-color: #D3D3D3;
 }
 
-#xytyyxemba .gt_grand_summary_row {
+#byisikgesq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#byisikgesq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#byisikgesq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1446,7 +1614,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   padding-right: 5px;
 }
 
-#xytyyxemba .gt_first_grand_summary_row {
+#byisikgesq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1456,11 +1624,11 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-top-color: #D3D3D3;
 }
 
-#xytyyxemba .gt_striped {
+#byisikgesq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xytyyxemba .gt_table_body {
+#byisikgesq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1469,7 +1637,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-bottom-color: #D3D3D3;
 }
 
-#xytyyxemba .gt_footnotes {
+#byisikgesq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1483,13 +1651,16 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-right-color: #D3D3D3;
 }
 
-#xytyyxemba .gt_footnote {
+#byisikgesq .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#xytyyxemba .gt_sourcenotes {
+#byisikgesq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1503,44 +1674,71 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-right-color: #D3D3D3;
 }
 
-#xytyyxemba .gt_sourcenote {
+#byisikgesq .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#xytyyxemba .gt_left {
+#byisikgesq .gt_left {
   text-align: left;
 }
 
-#xytyyxemba .gt_center {
+#byisikgesq .gt_center {
   text-align: center;
 }
 
-#xytyyxemba .gt_right {
+#byisikgesq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xytyyxemba .gt_font_normal {
+#byisikgesq .gt_font_normal {
   font-weight: normal;
 }
 
-#xytyyxemba .gt_font_bold {
+#byisikgesq .gt_font_bold {
   font-weight: bold;
 }
 
-#xytyyxemba .gt_font_italic {
+#byisikgesq .gt_font_italic {
   font-style: italic;
 }
 
-#xytyyxemba .gt_super {
+#byisikgesq .gt_super {
   font-size: 65%;
 }
 
-#xytyyxemba .gt_footnote_marks {
+#byisikgesq .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#byisikgesq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#byisikgesq .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#byisikgesq .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#byisikgesq .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table" style="table-layout: fixed;; width: 0px">
@@ -1599,17 +1797,17 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
 </table></div>
 </div>
 </div>
-<div id="homogenity-test" class="section level3" number="11.5.3">
+<div id="homogenity-test" class="section level3" number="8.5.3">
 <h3>
-<span class="header-section-number">11.5.3</span> Homogenity Test<a class="anchor" aria-label="anchor" href="#homogenity-test"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.3</span> Homogenity Test<a class="anchor" aria-label="anchor" href="#homogenity-test"><i class="fas fa-link"></i></a>
 </h3>
 <p>Only applicable to 2x2xK designs.</p>
-<div id="lxluryulna" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="oiayeddupk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#lxluryulna .gt_table {
+#oiayeddupk .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1634,7 +1832,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-left-color: #D3D3D3;
 }
 
-#lxluryulna .gt_heading {
+#oiayeddupk .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1646,33 +1844,37 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-right-color: #D3D3D3;
 }
 
-#lxluryulna .gt_title {
+#oiayeddupk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
 
-#lxluryulna .gt_subtitle {
+#oiayeddupk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
   padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#lxluryulna .gt_bottom_border {
+#oiayeddupk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lxluryulna .gt_col_headings {
+#oiayeddupk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1687,7 +1889,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-right-color: #D3D3D3;
 }
 
-#lxluryulna .gt_col_heading {
+#oiayeddupk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1707,7 +1909,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   overflow-x: hidden;
 }
 
-#lxluryulna .gt_column_spanner_outer {
+#oiayeddupk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1719,15 +1921,15 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   padding-right: 4px;
 }
 
-#lxluryulna .gt_column_spanner_outer:first-child {
+#oiayeddupk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lxluryulna .gt_column_spanner_outer:last-child {
+#oiayeddupk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lxluryulna .gt_column_spanner {
+#oiayeddupk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1739,8 +1941,11 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   width: 100%;
 }
 
-#lxluryulna .gt_group_heading {
-  padding: 8px;
+#oiayeddupk .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1761,7 +1966,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   vertical-align: middle;
 }
 
-#lxluryulna .gt_empty_group_heading {
+#oiayeddupk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1776,15 +1981,15 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   vertical-align: middle;
 }
 
-#lxluryulna .gt_from_md > :first-child {
+#oiayeddupk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lxluryulna .gt_from_md > :last-child {
+#oiayeddupk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lxluryulna .gt_row {
+#oiayeddupk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1803,7 +2008,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   overflow-x: hidden;
 }
 
-#lxluryulna .gt_stub {
+#oiayeddupk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1812,10 +2017,29 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#lxluryulna .gt_summary_row {
+#oiayeddupk .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#oiayeddupk .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#oiayeddupk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1825,17 +2049,26 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   padding-right: 5px;
 }
 
-#lxluryulna .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
+#oiayeddupk .gt_first_summary_row {
   border-top-style: solid;
-  border-top-width: 2px;
   border-top-color: #D3D3D3;
 }
 
-#lxluryulna .gt_grand_summary_row {
+#oiayeddupk .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#oiayeddupk .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#oiayeddupk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1845,7 +2078,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   padding-right: 5px;
 }
 
-#lxluryulna .gt_first_grand_summary_row {
+#oiayeddupk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1855,11 +2088,11 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-top-color: #D3D3D3;
 }
 
-#lxluryulna .gt_striped {
+#oiayeddupk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lxluryulna .gt_table_body {
+#oiayeddupk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1868,7 +2101,7 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-bottom-color: #D3D3D3;
 }
 
-#lxluryulna .gt_footnotes {
+#oiayeddupk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1882,13 +2115,16 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-right-color: #D3D3D3;
 }
 
-#lxluryulna .gt_footnote {
+#oiayeddupk .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#lxluryulna .gt_sourcenotes {
+#oiayeddupk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1902,44 +2138,71 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
   border-right-color: #D3D3D3;
 }
 
-#lxluryulna .gt_sourcenote {
+#oiayeddupk .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#lxluryulna .gt_left {
+#oiayeddupk .gt_left {
   text-align: left;
 }
 
-#lxluryulna .gt_center {
+#oiayeddupk .gt_center {
   text-align: center;
 }
 
-#lxluryulna .gt_right {
+#oiayeddupk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lxluryulna .gt_font_normal {
+#oiayeddupk .gt_font_normal {
   font-weight: normal;
 }
 
-#lxluryulna .gt_font_bold {
+#oiayeddupk .gt_font_bold {
   font-weight: bold;
 }
 
-#lxluryulna .gt_font_italic {
+#oiayeddupk .gt_font_italic {
   font-style: italic;
 }
 
-#lxluryulna .gt_super {
+#oiayeddupk .gt_super {
   font-size: 65%;
 }
 
-#lxluryulna .gt_footnote_marks {
+#oiayeddupk .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#oiayeddupk .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#oiayeddupk .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#oiayeddupk .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#oiayeddupk .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table" style="table-layout: fixed;; width: 0px">
@@ -1990,16 +2253,16 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
 </div>
 </div>
 </div>
-<div id="summary-and-recommendation" class="section level2" number="11.6">
+<div id="summary-and-recommendation" class="section level2" number="8.6">
 <h2>
-<span class="header-section-number">11.6</span> Summary and Recommendation<a class="anchor" aria-label="anchor" href="#summary-and-recommendation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.6</span> Summary and Recommendation<a class="anchor" aria-label="anchor" href="#summary-and-recommendation"><i class="fas fa-link"></i></a>
 </h2>
 <p>Having explored the available R packages to calculate the CMH statistics, using R can only be recommended if the analysis design is equivalent to 2 x 2 x K. Then, the base mantelhaen.test() function as well as the vcdExtra package show reliable results which are equal to the output of the SAS function. The same is true for the common odds ratio even though there is a marked difference in decimals.</p>
 <p>For the generalized version of the cmh test no R package can be recommended so far. SAS and R outputs differ substantially (possibly due to the underlying subroutines or functions) and the vcdExtra package seems to deliver inconsistent results outside the 2 x 2 x K design.</p>
 </div>
-<div id="references" class="section level2" number="11.7">
+<div id="references" class="section level2" number="8.7">
 <h2>
-<span class="header-section-number">11.7</span> References<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.7</span> References<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><a href="https://online.stat.psu.edu/stat504/lesson/5/5.4/5.4.5">Accessible Summary</a></li>
@@ -2011,49 +2274,56 @@ For large sparse table (many strata) CMHTest will occasionally throw an error in
 </ul>
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="survival-models.html"><span class="header-section-number">10</span> Survival Models</a></div>
-<div class="empty"></div>
+
+
+
+<div class="chapter-nav">
+<div class="prev"><a href="survival-models.html"><span class="header-section-number">7</span> Survival Models</a></div>
+<div class="next"><a href="how-to-contribute-to-this-project.html"><span class="header-section-number">9</span> How to Contribute to this Project</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#cochran-mantel-haenszel-test"><span class="header-section-number">11</span> Cochran-Mantel-Haenszel Test</a></li>
-<li><a class="nav-link" href="#naming-convention"><span class="header-section-number">11.1</span> Naming Convention</a></li>
-<li><a class="nav-link" href="#scale"><span class="header-section-number">11.2</span> Scale</a></li>
+<li><a class="nav-link" href="#cochran-mantel-haenszel-test"><span class="header-section-number">8</span> Cochran Mantel Haenszel Test</a></li>
+<li><a class="nav-link" href="#naming-convention"><span class="header-section-number">8.1</span> Naming Convention</a></li>
+<li><a class="nav-link" href="#scale"><span class="header-section-number">8.2</span> Scale</a></li>
 <li>
-<a class="nav-link" href="#testing-strategy"><span class="header-section-number">11.3</span> Testing Strategy</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data"><span class="header-section-number">11.3.1</span> Data</a></li>
-<li><a class="nav-link" href="#schemes"><span class="header-section-number">11.3.2</span> Schemes</a></li>
+<a class="nav-link" href="#testing-strategy"><span class="header-section-number">8.3</span> Testing Strategy</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data"><span class="header-section-number">8.3.1</span> Data</a></li>
+<li><a class="nav-link" href="#schemes"><span class="header-section-number">8.3.2</span> Schemes</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#implementation"><span class="header-section-number">11.4</span> Implementation</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#cmh-in-sas"><span class="header-section-number">11.4.1</span> CMH in SAS</a></li>
-<li><a class="nav-link" href="#in-r"><span class="header-section-number">11.4.2</span> In R</a></li>
+<a class="nav-link" href="#implementation"><span class="header-section-number">8.4</span> Implementation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#cmh-in-sas"><span class="header-section-number">8.4.1</span> CMH in SAS</a></li>
+<li><a class="nav-link" href="#in-r"><span class="header-section-number">8.4.2</span> In R</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#results"><span class="header-section-number">11.5</span> Results</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#cmh-statistics"><span class="header-section-number">11.5.1</span> CMH Statistics</a></li>
-<li><a class="nav-link" href="#odds-ratio"><span class="header-section-number">11.5.2</span> Odds Ratio</a></li>
-<li><a class="nav-link" href="#homogenity-test"><span class="header-section-number">11.5.3</span> Homogenity Test</a></li>
+<a class="nav-link" href="#results"><span class="header-section-number">8.5</span> Results</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#cmh-statistics"><span class="header-section-number">8.5.1</span> CMH Statistics</a></li>
+<li><a class="nav-link" href="#odds-ratio"><span class="header-section-number">8.5.2</span> Odds Ratio</a></li>
+<li><a class="nav-link" href="#homogenity-test"><span class="header-section-number">8.5.3</span> Homogenity Test</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#summary-and-recommendation"><span class="header-section-number">11.6</span> Summary and Recommendation</a></li>
-<li><a class="nav-link" href="#references"><span class="header-section-number">11.7</span> References</a></li>
+<li><a class="nav-link" href="#summary-and-recommendation"><span class="header-section-number">8.6</span> Summary and Recommendation</a></li>
+<li><a class="nav-link" href="#references"><span class="header-section-number">8.7</span> References</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/phuse-org/CSRMLW_bookdown/blob/main/cmh.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/phuse-org/CSRMLW_bookdown/edit/main/cmh.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/phuse-org/CSRMLW_bookdown/blob/main/ch_cmh.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/phuse-org/CSRMLW_bookdown/edit/main/ch_cmh.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
 </div>
+</div>
+  
+
+  
 
 </div>
-</div> <!-- .container -->
+ <!-- .container -->
 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 

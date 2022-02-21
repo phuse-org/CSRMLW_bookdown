@@ -1,4 +1,4 @@
-# Cochran-Mantel-Haenszel Test
+# Cochran Mantel Haenszel Test
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE)

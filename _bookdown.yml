@@ -6,17 +6,19 @@ output_dir: docs
 rmd_files: [
   "index.Rmd",
 
-  "intro.Rmd",
-  "contributing.Rmd",
-  "resources.Rmd",
+  "ch_intro.Rmd",
+  "ch_framework.Rmd",
 
-  "usecase.Rmd",
-  "framework.Rmd",
+  "part_usecases.Rmd",
+  "ch_general.Rmd",
+  "ch_summary-stats.Rmd",
+  "ch_linear-models.Rmd",
+  "ch_mixed-models.Rmd",
+  "ch_survival.Rmd",
+  "ch_cmh.Rmd",
 
-  "depth.Rmd",
-  "summary-stats.Rmd",
-  "linear-models.Rmd",
-  "mixed-models.Rmd",
-  "survival.Rmd",
-  "cmh.Rmd"
+  "part_appendix.Rmd",
+  "ch_contributing.Rmd",
+  "ch_resources.Rmd",
+  "ch_references.Rmd"
 ]
