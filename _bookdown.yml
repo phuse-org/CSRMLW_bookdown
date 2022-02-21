@@ -7,16 +7,19 @@ rmd_files: [
   "index.Rmd",
 
   "intro.Rmd",
-  "contributing.Rmd",
-  "resources.Rmd",
-
   "usecase.Rmd",
   "framework.Rmd",
 
   "depth.Rmd",
+  "general.Rmd",
   "summary-stats.Rmd",
   "linear-models.Rmd",
   "mixed-models.Rmd",
   "survival.Rmd",
   "cmh.Rmd"
+
+  "appendix.Rmd",
+  "contributing.Rmd",
+  "resources.Rmd",
+  "references.Rmd"
 ]
