@@ -27,11 +27,11 @@ df_disease <-
 
 ## Topic 1 (BV)
 
-### Getting Started
+### Getting Started {-}
 
 ## Sums of Squares Types
 
-### Getting Started
+### Getting Started {-}
 
 To demonstrate the various types of sums of squares, we'll create a data frame called `df_disease` taken from the SAS documentation (__reference__). The summary of the data is shown.
 
@@ -40,7 +40,7 @@ df_disease %>% head(3)
 summary(df_disease)
 ```
 
-### The Model
+### The Model {-}
 
 For this example, we're testing for a significant difference in `stem_length` using ANOVA.  In R, we're using `lm()` to run the ANOVA, and then using `broom::glance()` and `broom::tidy()` to view the results in a table format.
 
@@ -61,7 +61,7 @@ lm_model %>% tidy()
 ```
 
 
-### The Results
+### The Results {-}
 
 You'll see that R print the individual results for each level of the drug and disease interaction.  We can get the combined F table in R using the `anova()` function on the model object.
 
@@ -95,7 +95,7 @@ run;
 knitr::include_graphics("images/linear/sas-f-table.png")
 ```
 
-### Sums of Squares Tables
+### Sums of Squares Tables  {-}
 
 In SAS, it is easy to find the tables for the variouse types of sums of squares calculations. Unfortunately, it is not easy to match this output in using functions from base R.  However, the `rstatix` package offers a solution to produce these various sums of squares tables.  Note that there does not appear to be a `Type IV SS` equivalent in R.  
 
@@ -120,7 +120,7 @@ knitr::include_graphics("images/linear/sas-ss-type-1.png")
 ```
 
 
-#### Type II
+#### Type II {-}
 
 In R,
 
@@ -141,7 +141,7 @@ knitr::include_graphics("images/linear/sas-ss-type-2.png")
 ```
 
 
-#### Type III
+#### Type III {-}
 
 In R,
 
@@ -161,7 +161,7 @@ And in SAS,
 knitr::include_graphics("images/linear/sas-ss-type-3.png")
 ```
 
-#### Type IV
+#### Type IV {-}
 
 In SAS,
 
@@ -173,7 +173,7 @@ In R there is no equivalent operation to the `Type IV` sums of squares calculati
 
 ## Contrasts
 
-### Getting Started
+### Getting Started {-}
 
 To demonstrate contrasts, we'll create a data frame called `df_trial`. We see that the `drug` variable has three levels, _A_, _C_ and _E_.
 
@@ -193,7 +193,7 @@ contr.SAS(levels_drug)
 R also has the following definitions ready for use: `contr.sum`, `contr.poly`, and `contr.helmert`.
 
 
-### Using Contrasts in R
+### Using Contrasts in R {-}
 
 There are many ways to work with contrasts in R, but here we're only going to focus on defining contrasts in the modeling function.  In this example, we're creating a linear model to predict post values from the pre and drug values. The only difference between the two is in the contrasts argument.  In one case, we're using the R default, and in the other we're using the SAS default.
 
@@ -233,7 +233,7 @@ lm(post ~ pre + drug, data = df_trial,
    contrasts = contrast_c)
 ```
 
-### Easy Contrasts in R with `emmeans`
+### Easy Contrasts in R with `emmeans` {-}
 
 The `emmeans` package makes working with contrasts much easier.  In fact, this is the method that we recommend when trying to match contrast output between SAS and R.
 
@@ -291,7 +291,7 @@ model_lm %>%
   ))
 ```
 
-### Matching Contrasts: R and SAS
+### Matching Contrasts: R and SAS {-}
 
 It is recommended to use the `emmeans` package when attempting to match contrasts between R and SAS.  In SAS, all contrasts must be manually defined, whereas in R, we have many ways to use pre-existing contrast definitions.   The `emmeans` package makes simplifies this process, and provides syntax that is similar to the syntax of SAS.
 

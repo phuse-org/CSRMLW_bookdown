@@ -1,7 +1,7 @@
 ---
 title: "Clinical Statistical Reporting in a Multilingual World"
 author: "PHUSE Whitepaper Team"
-date: "2022-02-21"
+date: "2022-03-09"
 site: "bookdown::bookdown_site"
 url: https://github.com/phuse-org
 description: An overview of the CSRMLW Framework
